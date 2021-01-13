@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./published/css/fontawesome/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./published/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./published/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NavMenu -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">MIPS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item" id="helpPage">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                    <li class="nav-item" id="demoPage">
+                        <a class="nav-link" href="#">Demo</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mode</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" name="Pipeline" href="#">Pipeline</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" name="SingleInstruction" href="#">Single Insturction</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <div class="container">
+            <div class="row">
+                <div class="card col-sm-12 col-md-9 col-lg-9" style="height: 70vh" v-html="log">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <i type="button" name="plus" class="fas fa-plus"></i>&nbsp;&nbsp;
+                                <i type="button" name="minus" class="fas fa-minus"></i>
+                                <div id="Pipeline" class="mode">
+                                    <img id="PipelineImage" src="img/Pipeline.svg"/>
+                                </div>
+                                <div id="SingleInstruction" class="mode">
+                                    <img id="SingleInstructionImage" src="img/SingleInstruction.svg"/>
+                                </div>
+                            </p>
+                        </div>
+                </div>
+                <div class="card col-sm-12 col-md-3 col-lg-3" style="height: 70vh" v-html="log">
+                    <div class="card-body">
+                        <a type="button" id="uploadFileButton" class="fas fa-upload"></a>
+                        <a type="button" href="#" class="fas fa-download"></a>
+                        <a type="button" href="#" class="fas fa-play"></a>
+                        <a type="button" href="#" class="fas fa-redo-alt"></a>
+                    </div>
+                    <!--<textarea class="form-control" type="file" name="upload" id="upload"></textarea>-->
+                    <input type="file" name="upload" id="upload" style="display: none;" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="card col-sm-12 col-md-12 col-lg-12" style="height: 30vh" v-html="log">
+                    <p class="card-text">
+                        <a href="#" class="fas fa-backward"></a>
+                        <a href="#" class="fas fa-forward"></a>
+                        <a href="#" class="fas fa-step-forward"></a>
+                        <a href="#" class="fas fa-pause"></a>
+                        <a href="#" class="btn btn-primary">0.5*</a>
+                        <a href="#" class="btn btn-primary">2.0*</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="./published/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="./published/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./published/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="./published/js/backtotop.js"></script>
+     <script>
+        $(document).ready(function() {
+            $("#SingleInstruction").hide();
+            $('a[name="SingleInstruction"]').click(function(){
+                $("#Pipeline").hide();
+                $("#SingleInstruction").show();
+            });
+            $('a[name="Pipeline"]').click(function(){
+                $("#SingleInstruction").hide();
+                $("#Pipeline").show();
+            });
+            $('i[name="plus"]').click(function(){
+                $("#PipelineImage").css({'width': $("#PipelineImage").width()*2});
+                $("#SingleInstructionImage").css({'width': $("#SingleInstructionImage").width()*2});
+            });
+            $('i[name="minus"]').click(function(){
+                $("#PipelineImage").css({'width': $("#PipelineImage").width()/2});
+                $("#SingleInstructionImage").css({'width': $("#SingleInstructionImage").width()/2});
+            });
+        });
+
+
+        $('#uploadFileButton').click(function () {
+            $('#upload').click();
+        });
+        $('#upload').click(function () {
+            $('#upload').val('');
+        });
+        $('#upload').on('change', function(){
+            var fileNameStr = $('#upload').val();
+            var index2 = fileNameStr.length;
+            if(fileNameStr.indexOf("/") != -1) {
+                var index1 = fileNameStr.lastIndexOf("/");
+            } else {
+                var index1 = fileNameStr.lastIndexOf("\\");
+            }
+            if (index1 <= -1) {
+                index1 = 0;
+            } else {
+                index1 += 1;
+            }
+            fileNameStr = fileNameStr.substring(index1, index2);
+            $('#uploadFileName').html(fileNameStr);
+        });
+
+    </script>
+
+
+    <style>
+        #PipelineImage,#SingleInstructionImage{
+            width: 100%;
+            height: 100%;
+        }
+        #Pipeline,#SingleInstruction{
+            overflow-x:auto;
+            overflow-y:auto;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        main {
+            height: 100vh;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        #mainContent {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center
+        }
+    </style>
+</body>
