@@ -12,9 +12,9 @@
    height="210mm"
    viewBox="0 0 297 210"
    version="1.1"
-   id="svg8"
+   id="SingleInstructionImage"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="SingleInstruction_Altered.svg">
+   sodipodi:docname="SingleInstruction.svg">
   <defs
      id="defs2">
     <marker
@@ -1597,10 +1597,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.6652162"
-     inkscape:cx="576.4301"
-     inkscape:cy="227.24539"
+     inkscape:cx="558.83548"
+     inkscape:cy="305.87642"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1643"
+     inkscape:current-layer="REGISTERS"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
@@ -2506,12 +2506,13 @@
     <g
        id="REGISTERS">
       <rect
-         style="opacity:0.999;fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.259703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-dashoffset:0;paint-order:fill markers stroke"
+         style="opacity:0.999;fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:0.259703;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.9;stroke-dasharray:none;stroke-dashoffset:0;paint-order:fill markers stroke"
          id="rect2673"
          width="22.172832"
          height="35.214569"
          x="124.71064"
-         y="77.108307" />
+         y="77.108307"
+         inkscape:label="rect2673" />
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:2.82222px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -2522,7 +2523,7 @@
            id="tspan2675"
            x="129.1942"
            y="95.79248"
-           style="font-size:2.82222px;stroke-width:0.264583">Registers</tspan></text>
+           style="font-size:2.82222px;fill:#000000;fill-opacity:1;stroke-width:0.264583">Registers</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker2729)"

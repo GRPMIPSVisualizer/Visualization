@@ -1,0 +1,22 @@
+{
+  "name": "Hardware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {    
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage",
+    "tsc":"tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^26.0.19",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "typedoc": "^0.20.12",
+    "typescript": "^4.1.3"
+  }
+}

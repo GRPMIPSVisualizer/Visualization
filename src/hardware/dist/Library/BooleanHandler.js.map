@@ -1,0 +1,1 @@
+{"version":3,"file":"BooleanHandler.js","sourceRoot":"","sources":["../../src/Library/BooleanHandler.ts"],"names":[],"mappings":";;;AAEA,SAAgB,QAAQ,CAAC,IAAe;IACpC,IAAI,IAAI;QACJ,OAAO,CAAC,CAAC;;QAET,OAAO,CAAC,CAAC;AACjB,CAAC;AALD,4BAKC;AAED,SAAgB,QAAQ,CAAC,GAAc;IACnC,IAAI,GAAG,IAAI,CAAC;QACR,OAAO,IAAI,CAAC;;QAEZ,OAAO,KAAK,CAAC;AACrB,CAAC;AALD,4BAKC"}

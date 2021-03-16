@@ -1,0 +1,557 @@
+<html>
+	<head>
+		<style>
+			
+		
+		</style>
+	</head>
+	<body>
+
+		<svg viewBox="0 0 400 400" width="1000" height="1000" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+			<defs>
+			  <symbol viewBox="0 0 110 80" id="instrMem" class="Mem" font-size="4">
+				<rect width="100" height="50" fill="#ffffff" style="stroke:#006600;" x="0" y="0"/>
+				<circle cx="0" cy="25" r="1.5"/>
+				<text x="3" y="25" >
+					Read 
+					<tspan x="3" dy="5">Address</tspan>
+				</text>
+				<rect width="75" height="40" x="20" y="5" stroke="aliceblue" fill="#e7e6e1" />
+				<line x1="40" x2="40" y1="5" y2="45" stroke="#9b5151" stroke-width="1" />
+				<line x1="20" x2="95" y1="11" y2="11" stroke="#9b5151" stroke-width="1"/>
+		  
+				<!-- This is separators -->
+				<line x1="20" x2="95" y1="18" y2="18" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="25" y2="25" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="32" y2="32" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="40" y2="40" stroke="#1687a7" stroke-width="0.4"/>
+		  
+		  
+				<text x="22" y="9" font-size="3" font-style="oblique">
+					PC Address
+				</text>
+				<text x="55" y="9" font-size="3" font-style="oblique">
+					Machine Code
+				</text>
+				<circle cx="100" cy="25" r="1.5" />
+				<text x="102" y="30">
+					Instruction[31:0]
+				</text>
+				<text x="20" y="55" font-size="6">
+					Instruction Memory
+				</text>
+				<text x="22" y="16">
+				  0xffffffff
+				</text>
+		  
+				<path d="M 3 49.5 l 5 -4 l 5 4" fill="#487e95" stroke="black" stroke-width="0.5" />
+				<circle cx="8" cy="49.5" r="1.2" />
+				<text font-size="4" x="10" y="54.5" fill="#007965" stroke="#007965" stroke-width="0.4">
+					  CLK
+				  </text>
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 80 80" id="alu" class="ALU" font-size="4" stroke="#007965" stroke-width="1">
+				<path d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z " fill="none"/>
+				<text x="19" y="39" stroke="none" font-size="5">
+				  ALU
+				</text>
+				<circle cx="10" cy="20" r="1" stroke="none"/>
+				<circle cx="10" cy="56" r="1" stroke="none"/>
+				<circle cx="50" cy="45" r="1" stroke="none" />
+				<circle cx="50" cy="32" r="1" stroke="none" />
+				<circle cx="30" cy="58.5" r="1" stroke="none" />
+				<text x="39" y="34" stroke="#51c2d5" stroke-width="0.3" fill="#51c2d5">
+					Zero
+				</text>
+		  
+				<text x="36" y="47" stroke="#51c2d5" stroke-width="0.3" fill="#51c2d5">
+					Result
+				</text>
+		  
+				<text x="12" y="22" stroke="#6930c3" stroke-width="0.3" fill="#6930c3">
+					SrcA
+				</text>
+		  
+				<text x="12" y="58" stroke="#6930c3" stroke-width="0.3" fill="#6930c3">
+					SrcB
+				</text>
+		  
+		  
+				<text x="32" y="62" stroke="#184d47" stroke-width="0.3" fill="#184d47">
+					ALU control
+				</text>
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 60 120" id="MUX" class="MUX32">
+				<path d="M 16 16  a 15 15 0 0 1 30 0 v 75 a 15 15 0 1 1 -30 0 v -75" stroke="#007965" fill="none" />
+				<text  y="40" font-size="12" >
+					<tspan  x="25" dx="0 -10.4 -8.4" dy="5 12 12">MUX</tspan>
+				</text>
+				<circle cx="16" cy="24" r="1.5" />
+				<circle cx="16" cy="80" r="1.5" />
+				<circle cx="46" cy="52" r="1.5" />
+				<circle cx="31" cy="1.5" r="1.5" />
+				<text x="19" y="27" font-size="8">
+				   A
+				</text>
+				<text x="19" y="83" font-size="8">
+				   B
+				</text>
+				<text x="26" y="9" font-size="6">
+				   Sel
+				</text>
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 60 120" id="MUXrft" class="MUXrft32">
+				<path d="M 16 16  a 15 15 0 0 1 30 0 v 75 a 15 15 0 1 1 -30 0 v -75" stroke="#007965" fill="none" />
+				<text  y="40" font-size="12" >
+					<tspan  x="25" dx="0 -10.4 -8.4" dy="5 12 12">MUX</tspan>
+				</text>
+				<circle cx="46" cy="24" r="1.5" />
+				<circle cx="46" cy="80" r="1.5" />
+				<circle cx="16" cy="52" r="1.5" />
+				<circle cx="31" cy="1.5" r="1.5" />
+				<text x="49" y="35" font-size="8">
+				   A
+				</text>
+				<text x="49" y="90" font-size="8">
+				   B
+				</text>
+				<text x="26" y="9" font-size="6">
+				   Sel
+				</text>
+			  </symbol>
+			  
+			  <symbol viewBox="0 0 35 65" id="PC" class="PCRegister">
+				  <rect width="30" height="60" x="0" y="0" stroke="aliceblue" fill="#e7e6e1" />
+				  <text x="13" y="25"  font-size="8">
+					P
+					<tspan dx="-8" dy="10">
+						C
+					</tspan>
+				  </text>
+				  <path d="M 0.7 47 l 4 4 l -4 4  " fill="#487e95" stroke="black" stroke-width="0.5"/>
+				  <text x="6" y="53" font-size="5">
+					  CLK
+				  </text>
+				  <circle cx="0.7" cy="15" r="1.2" />
+				  <circle cx="30" cy="30" r="1.2" />
+				  <circle cx="0.7" cy="51" r="1.2" />
+			  </symbol>
+		  
+			  <symbol viewBox="-20 -20 60 60" id="shiftLeft2" class="ShiftLeft2">
+				<ellipse cx="11" cy="16" rx="10" ry="15" fill="#e7e6e1" stroke="black" stroke-width="0.5"/>
+				<text x="5" y="15" font-size="5">
+					Shift
+					<tspan dx="-13" dy="6">
+						Left 2
+					</tspan>
+				</text>
+				<circle cx="1" cy="15" r="0.8" />
+				<circle cx="21" cy="15" r="0.8" />
+			  </symbol>
+		  
+			  <symbol viewBox="-20 -20 55 55" id="aluControl" class="ALUControl">
+				<ellipse cx="11" cy="16" rx="10" ry="15" fill="#e7e6e1" stroke="black" stroke-width="0.5"/>
+				<text x="6" y="15" font-size="4.5">
+					ALU
+					<tspan dx="-13" dy="6">
+						Control
+					</tspan>
+				</text>
+				<circle cx="1" cy="15" r="0.8" />
+				<circle cx="21" cy="15" r="0.8" />
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 50 50" id="signExtend" class="SignExtend">
+				<ellipse cx="11" cy="16" rx="10" ry="15" fill="#e7e6e1" stroke="black" stroke-width="0.5"/>
+				<text x="6" y="15" font-size="4.5">
+					Sign-
+					<tspan dx="-15" dy="6">
+						Extend
+					</tspan>
+				</text>
+				<circle cx="1" cy="15" r="0.8" />
+				<circle cx="21" cy="15" r="0.8" />
+			  </symbol>
+		  
+			  <symbol id="adder" viewBox="0 0 80 80" class="Adder" font-size="4" stroke="#007965" stroke-width="1">
+				<path d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z " fill="none"/>
+				<text x="19" y="39" stroke="none" font-size="7">
+				  Adder
+				</text>
+				<circle cx="50" cy="38" r="1" stroke="none" />
+				<text x="37" y="43" stroke="#51c2d5" stroke-width="0.3" fill="#51c2d5">
+					Result
+				</text>
+				<text x="12" y="22" stroke="#6930c3" stroke-width="0.3" fill="#6930c3">
+					SrcA
+				</text>
+		  
+				<text x="12" y="58" stroke="#6930c3" stroke-width="0.3" fill="#6930c3">
+					SrcB
+				</text>
+		  
+				<circle cx="10" cy="20" r="1" stroke="none"/>
+				<circle cx="10" cy="56" r="1" stroke="none"/>
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 110 110" id="reg" class="Reg"  >
+				  <rect width="100" height="100" fill="#ffffff" style="stroke:#006600;" x="0" y="0" />
+				  <rect width="70" height="90" x="15" y="5" stroke="aliceblue" fill="#e7e6e1" />
+				  <path d="M 15 100 l 5 -4 l 5 4" fill="#487e95" stroke="black" stroke-width="0.5" />
+				  <circle cx="0" cy="12.5" r="1.5"  />
+				  <circle cx="0" cy="37.5" r="1.5"  />
+				  <circle cx="0" cy="60" r="1.5"  />
+				  <circle cx="0" cy="85" r="1.5"  />
+				  <circle cx="20" cy="100" r="1.5"  />
+				  <circle cx="50" cy="0" r="1.5"  />
+				  <circle cx="100" cy="25" r="1.5"  />
+				  <circle cx="100" cy="75" r="1.5"  />
+		  
+				  <!-- These are saperators -->
+				  <line x1="15" x2="85" y1="37" y2="37" stroke-width="0.5"  stroke="#ff9292"/>
+				  <line x1="15" x2="85" y1="58" y2="58" stroke-width="0.5"  stroke="#ff9292"/>
+				  <line x1="15" x2="85" y1="78" y2="78" stroke-width="0.5"  stroke="#ff9292"/>
+		  
+				  <line x1="15" x2="85" y1="20" y2="20" stroke-width="1"  stroke="#1a508b"/>
+				  <line x1="30" x2="30" y1="5" y2="95" stroke-width="1"  stroke="#1a508b"/>
+				  
+				  <text x="18" y="12" font-size="4" fill="#007965" stroke="#007965" stroke-width="0.3">
+					Reg
+					<tspan dx="-9.5" dy="5">
+						Name
+					</tspan>
+				  </text>
+		  
+				  <text x="38" y="14" font-size="6" fill="#007965" stroke="#007965" stroke-width="0.3">
+					  32-bits data
+				  </text>
+		  
+				  <text font-size="3.3" x="2" y="13">
+					  Read
+					  <tspan dx="-10.5" dy="5">
+						Register1
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="3.3" x="2" y="38">
+					  Read
+					  <tspan dx="-10.5" dy="5">
+						Register2
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="3.3" x="2" y="60">
+					  Wirte
+					  <tspan dx="-10.5" dy="5">
+						Register
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="3.3" x="2" y="85">
+					  Wirte
+					  <tspan dx="-9" dy="5">
+						Data
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="4" x="22" y="105" fill="#007965" stroke="#007965" stroke-width="0.4">
+					  CLK
+				  </text>
+		  
+				  <text font-size="4" x="87" y="24">
+					  Read
+					  <tspan dx="-11" dy="5">
+						Data 1
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="4" x="87" y="74">
+					  Read
+					  <tspan dx="-12" dy="5">
+						Data 2
+					  </tspan>
+				  </text>
+		  
+				  <text font-size="4" x="42" y="5">
+					  RegWrite
+				  </text>
+		  
+				  <text x="90" y="35" font-size="6" fill="#007965" stroke="#007965" stroke-width="0.4">
+					<tspan dx="0 -3.6 -3.4 -2.7 -2.3 -2.5 -2.6 -2.9" dy="0 4.5 4.5 7 4.5 4.8 4.5 4.5">
+						Register
+					</tspan> 
+				  </text>
+			  </symbol>
+		  
+		  
+			  <symbol viewBox="-10 -10 200 200" id="dataMem" class="DataMem" font-size="4">
+				<rect width="100" height="50" fill="#ffffff" style="stroke:#006600;" x="0" y="0"/>
+				<circle cx="100" cy="13" r="1.5"/>
+				<text x="102" y="18" >
+					Address
+				</text>
+		  
+				<circle cx="100" cy="38" r="1.5"/>
+				<text x="102" y="43" >
+					Write
+					<tspan x="102" dy="5">Data</tspan>
+				</text>
+		  
+		  
+				<rect width="75" height="40" x="20" y="5" stroke="aliceblue" fill="#e7e6e1" />
+				<line x1="40" x2="40" y1="5" y2="45" stroke="#9b5151" stroke-width="1" />
+				<line x1="20" x2="95" y1="11" y2="11" stroke="#9b5151" stroke-width="1"/>
+		  
+				<!-- This is separators -->
+				<line x1="20" x2="95" y1="18" y2="18" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="25" y2="25" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="32" y2="32" stroke="#1687a7" stroke-width="0.4"/>
+				<line x1="20" x2="95" y1="40" y2="40" stroke="#1687a7" stroke-width="0.4"/>
+		  
+		  
+				<text x="24" y="9" font-size="3" font-style="oblique">
+					Address
+				</text>
+				<text x="58" y="9" font-size="3" font-style="oblique">
+					32-bits data
+				</text>
+				<circle cx="0" cy="25" r="1.5" />
+				<text x="2" y="30">
+					Read 
+					<tspan x="2" dy="5">
+					  Data
+					</tspan> 
+				</text>
+				<text x="30" y="57" font-size="6">
+					Data Memory
+				</text>
+				<text x="22" y="16">
+				  0xffffffff
+				</text>
+		  
+				<circle cy="0" cx="33" r="1.5" />
+				<circle cy="0" cx="66" r="1.5" />
+				<text x="26" y="5">
+					MemRead
+				</text>
+				<text x="58" y="5">
+					MemWrite
+				</text>
+		  
+		  
+				<path d="M 3 49.5 l 5 -4 l 5 4" fill="#487e95" stroke="black" stroke-width="0.5" />
+				<circle cx="8" cy="49.5" r="1.2" />
+				<text font-size="4" x="11" y="54.5" fill="#007965" stroke="#007965" stroke-width="0.4">
+					  CLK
+				</text>
+		  
+				<marker id="markerCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">
+					<circle cx="5" cy="5" r="1" style="stroke: none; fill:#000000;"/>
+				</marker>
+				<marker id="markerArrow" markerwidth="13" markerheight="13" refX="0" refY="1.5" orient="auto">
+					  <path d="M0,0 L0,3 L2,1.5 Z" style="fill: #000000;"></path>
+				</marker>
+		  
+		  
+			  </symbol>
+		  
+			  <symbol viewBox="0 0 210 210" id="control" class="Control" font-size="4">
+				<ellipse cx="52" cy="102" rx="50" ry="100" fill="none" stroke="#007965" stroke-width="2" />
+				<circle cx="80" cy="20" r="3" />
+				<circle cx="92" cy="42" r="3" />
+				<circle cx="98.5" cy="65" r="3" />
+				<circle cx="102" cy="89" r="3" />
+				<circle cx="102" cy="115" r="3" />
+				<circle cx="99" cy="137" r="3" />
+				<circle cx="94.5" cy="155" r="3" />
+				<circle cx="86" cy="175" r="3" />
+				<circle cx="75" cy="191" r="3" />
+				<text font-size="22" x="45" y="60" fill="#007965" stroke="#007965" stroke-width="0.4"> 
+				  <tspan>C</tspan> 
+				  <tspan x="46" dy="16">o</tspan>
+				  <tspan x="46" dy="15">n</tspan>
+				  <tspan x="48.5" dy="19">t</tspan>
+				  <tspan x="48.5" dy="17">r</tspan>
+				  <tspan x="46" dy="15">o</tspan>
+				  <tspan x="49.5" dy="20">l</tspan>
+				   
+				
+				</text>
+		  
+			  </symbol>
+			  <symbol viewBox="0 0 50 50" id="and" class="And" font-size="4">
+				  <path d="M10 10 l 15 0 c 30 0 30 30 0 30 l -15 0 Z" fill="none" stroke="#03DCDA" stroke-width="1.5" />
+				  <text font-size="10" x="16" y="28">
+					  And
+				  </text>
+			  </symbol>
+		  
+		  
+			</defs>
+		  
+			<path d="M 40 133.5 l 18 0" class="wire" id="pc2insMem" stroke="#161d6f" stroke-width="1"/>
+			<path d="M 140 133.5 l 14 0 v -74 M 154 59.5 l 25.5 0 M 154 77.8 l 25.5 0 " class="wire" id="insMem2reg" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 159 78 v 9 h 5.5" class="wire" id="ins2mux1A" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 154 101 h 10.5" class="wire" id="ins2mux1B" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 172 94 h 8"  class="wire" id="mux1toreg" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 253 68.7 h 24.5"  class="wire" id="regRD1toAluSrcA" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 253 105 h 8.5"  class="wire" id="regRD2tomux2" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 269 112 h 3 v -16.3 h 5"  class="wire" id="mux2toAluSrcB" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 255 105 v 22 h 100 v 41.4 h -16"  class="wire" id="regRD2toDMWD" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			<path d="M 307 87.5 h 40 v 38 c 3 0 3 3 0 3 v 20 h -8.5"  class="wire" id="alu2DMAddr" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 320 87.5 v 38 c 3 0 3 3 0 3 v 7 h -80 v 20.5 h -11"  class="wire" id="alu2mux3" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 258 158 h -10 v 12 h -19"  class="wire" id="DMRD2mux3" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 221.5 163 h -46 v -50.5 h 4"  class="wire" id="mux3toRegWD" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 45 133.5 v -110 h 20"  class="wire" id="pc2adder1" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			<path d="M 50 41.5 L 62.6 41.5" class="wire" id="const4"  stroke="#161d6f" stroke-width="1" style="marker-start:url(#markerCircle);marker-end: url(#markerArrow);"/>
+			<text x="49" y="39.8" font-size="3" font-style="italic">4</text>
+		  
+			<path d="M 154 131 h 20 c 0 -3 3 -3 3 0 h 82 v -2.5 c -3 0 -3 -3 0 -3 v -6.5 h 2.5"  class="wire" id="ins2mux2" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			<path d="M 259 119 v -12.5 c -3 0 -3 -3 0 -3 v -33.3 c -3 0 -3 -3 0 -3 v -12.3 h 5"  class="wire" id="ins2shift1" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 276 55 h 8"  class="wire" id="shift1toadder2" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+		  
+			<path d="M 204 131 v 12 h 30 v -10 h 40 v -4.5 c -3 0 -3 -3 0 -3 v -10.5 h 6"  class="wire" id="ins2aluCtl" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 288 115 h 4.5 v -18"  class="wire" id="aluCtl2alu" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 85 32.5 h 198.8"  class="wire" id="adder1toadder2" fill="none" stroke="#161d6f" stroke-width="1" />
+		  
+			<path d="M 250 32.5 v -10 h 70 v 24.5 h 8.2"  class="wire" id="adder1tomux4" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 309.6 43.8 h 5 v 19.5 h 14"  class="wire" id="adder2tomux4" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 337 55.2 h 16.4"  class="wire" id="mux4tomux5" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			<path d="M 152 133.5 v -88 h 10.5"  class="wire" id="ins2shift2" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 174 45.5 h 25"  class="wire" id="shift2tojmpaddr" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 180 32.5 v 8 h 18 v 4.2"  class="wire" id="adder1tojmpaddr" fill="none" stroke="#161d6f" stroke-width="1" />
+		  
+			<path d="M 198 45.5 h 48 v -11.5 c -3 0 -3 -3 0 -3 v -12 h 95 v 34.6 c 3 0 3 3 0 3 v 15 h 12.5"  class="wire" id="jmpAddr2mux5" fill="none" stroke="#161d6f" stroke-width="1" />
+			<path d="M 362.3 63.3 h 5 v -55 h -350 v 115.9 h 4.5"  class="wire" id="mux5toPc" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			<path d="M 144 133.5 v -30 h -31.6 v -5.6"  class="wire" id="ins2ctl" fill="none" stroke="#161d6f" stroke-width="1" />
+			
+			
+		  
+		  
+		  
+		  
+		  
+		  
+			<circle cx="45" cy="133.5" r="1" />
+			<circle cx="154" cy="133.5" r="1" />
+			<circle cx="154" cy="59.5" r="1" />
+			<circle cx="154" cy="77.8" r="1"/>
+			<circle cx="159" cy="77.8" r="1" />
+			<circle cx="154" cy="101" r="1" />
+			<circle cx="255" cy="105" r="1" />
+			<circle cx="320" cy="87.5" r="1" />
+			<circle cx="154" cy="131" r="1" />
+			<circle cx="259" cy="119" r="1" />
+			<circle cx="204" cy="131" r="1" />
+			<circle cx="250" cy="32.5" r="1" />
+			<circle cx="144" cy="133.5" r="1" />
+			<circle cx="152" cy="133.5" r="1" />
+			<circle cx="180" cy="32.5" r="1" />
+			<circle cx="198" cy="45.5" r="1" id="jumpAddr"/>
+		  
+			<!-- control -->
+			<path d="M 119 54.8 h 10 v -43   h 219"  class="CtlWire" id="Jump" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 307.5 77.8 h 38 v -60.5 h 2.3"  class="CtlWire" id="isZero" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 359 14.5 h 3 v 25 h -4.2 v 9.3"  class="CtlWire" id="JumpAndZero" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			
+		  
+			<path d="M 122 60   h 15 v -44   h 195.78  v 24.5"  class="CtlWire" id="Branch" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 124 65.5 h 20 v -44.5 h 118  v 70 h 3.25 v 8.5"  class="CtlWire" id="ALUSrc" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 125 71.2 h 24 v -45   h 67.3 v 25"  class="CtlWire" id="RegWrite" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			
+			<path d="M 124.6 77.5  h 18 v 4 h 6 h 2 h 14 v -2 h 3.65 v 2"  class="CtlWire" id="RegDst" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 124 82.7 h 26 v 57.7 h 100   v -11   h 34   v -7.5"  class="CtlWire" id="ALUOp" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 123 86.9 h 25 v 58   h 106   v -13   h 56.8 v 6"  class="CtlWire" id="MemWrite" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 120 91.7 h 26 v 56   h 110   v -13.5 h 28.3 v 3"  class="CtlWire" id="MemRead" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			<path d="M 118 95.5 h 24 v 53.8 h 83.23 v 1"  class="CtlWire" id="MemtoReg" fill="none" stroke="#03DCDA" stroke-width="0.7" />
+			
+			
+		  
+			<text font-size="3" x="148" y="44">
+				Ins[25:0]
+			</text>
+		  
+			<text font-size="3" x="158" y="50">
+				26
+			</text>
+		  
+			<text font-size="3" x="175" y="50">
+				28
+			</text>
+		  
+			<text font-size="3" x="181.2" y="39">
+				PC + 4 [31:28]
+			</text>
+		  
+			<text font-size="3" x="157" y="129.5">
+				Ins [15:0]
+			</text>
+		  
+			<text font-size="3" x="220" y="141.7">
+				Ins [5:0]
+			</text>
+			
+			<text font-size="2" x="154.5" y="100">
+				Ins [15:11]
+			</text>
+		  
+			<text font-size="3" x="160" y="76">
+				Ins [20:16]
+			</text>
+		  
+			<text font-size="3" x="160" y="58">
+				Ins [25:21]
+			</text>
+		  
+			<text font-size="4" x="115" y="102">
+				Ins [31:26]
+			</text>
+		  
+			<text font-size="3" x="206" y="130">
+				16
+			</text>
+		  
+			<text font-size="3" x="222" y="130">
+				32
+			</text>
+			
+			<text font-size="3" x="181.2" y="49">
+				Jump address [31–0]
+			</text>
+		  
+			<use xlink:href="#PC" id="pc" width="25" height="40" x="20" y="115"></use>
+			<use xlink:href="#instrMem" id="insMem" width="130" height="65" x="38" y="113"></use>
+			<use xlink:href="#reg" id="regFile" width="160" height="80" x="140" y="50.5"></use>
+			<use xlink:href="#alu" id="ALU" width="60" height="60" x="270" y="53.7"></use>
+			<use xlink:href="#dataMem" id="dataM" width="160" height="160" x="250" y="130"></use>
+			<use xlink:href="#MUX" id="mux1" width="30" height="30" x="153" y="81"></use>
+			<use xlink:href="#MUX" id="mux2" width="30" height="30" x="250" y="99"></use>
+			<use xlink:href="#MUXrft" id="mux3" width="30" height="30" x="210" y="150"></use>
+			<use xlink:href="#adder" id="adder1" width="40" height="40" x="60" y="13.5"></use>
+			<use xlink:href="#control" id="ctl" width="50" height="50" x="100" y="50"></use>
+			<use xlink:href="#aluControl" id="aluCtl" width="25" height="25" x="270" y="99"></use>
+			<use xlink:href="#signExtend" id="signExd" width="25" height="25" x="210" y="123.5"></use>
+			<use xlink:href="#adder" id="adder2" width="50" height="50" x="278" y="20"></use>
+			<use xlink:href="#shiftLeft2" id="shift1" width="35" height="35" x="252" y="34.5"></use>
+			<use xlink:href="#shiftLeft2" id="shift2" width="35" height="35" x="150" y="25"></use>
+			<use xlink:href="#MUX" id="mux4" width="35" height="35" x="315" y="40"></use>
+			<use xlink:href="#MUX" id="mux5" width="35" height="35" x="340" y="48.2"></use>
+			<use xlink:href="#and" id="and1" width="15" height="15" x="345" y="7"></use>
+			  
+		  <!--   
+			<use xlink:href="#dataMem" x="50" y="50" ></use> -->
+			
+
+		  </svg>
+	 
+	</body>
+</html>

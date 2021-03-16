@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./published/css/fontawesome/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./published/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- DataTable -->
+    <link href="./published/DataTables-1.10.23/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="./published/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NavMenu -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">MIPS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item" id="helpPage">
+                        <a class="nav-link active" href="#">Help</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <div class="col-lg-12 col-md-12 col-sm-12" id="Instruction">
+                    <div class="card">
+                        <div class="card-header"  id="InstructionInfo">Request Table
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                            </h5>
+                            <table id="instructions" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Instruction</th>
+                                        <th>Type</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>add</td>
+                                        <td>R-type</td>
+                                        <td>add $1,$2,$3 => $1=$2+$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>addu</td>
+                                        <td>R-type</td>
+                                        <td>addu $1,$2,$3 => $1=$2+$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sub</td>
+                                        <td>R-type</td>
+                                        <td>sub $1,$2,$3 => $1=$2-$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>subu</td>
+                                        <td>R-type</td>
+                                        <td>subu $1,$2,$3 => $1=$2-$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>and</td>
+                                        <td>R-type</td>
+                                        <td>and $1,$2,$3 => $1=$2 & $3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>or</td>
+                                        <td>R-type</td>
+                                        <td>or $1,$2,$3 => $1=$2 | $3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>xor</td>
+                                        <td>R-type</td>
+                                        <td>xor $1,$2,$3 => $1=$2 ^ $3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>nor</td>
+                                        <td>R-type</td>
+                                        <td>nor $1,$2,$3 => $1=~($2 | $3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>slt</td>
+                                        <td>R-type</td>
+                                        <td>slt $1,$2,$3 => if($2<$3){$1=1} else{$1=0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sltu</td>
+                                        <td>R-type</td>
+                                        <td>sltu $1,$2,$3 => if($2<$3){$1=1} else{$1=0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sll</td>
+                                        <td>R-type</td>
+                                        <td>sll $1,$2,10 => $1=$2<<10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>srl</td>
+                                        <td>R-type</td>
+                                        <td>srl $1,$2,10 => $1=$2>>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sra</td>
+                                        <td>R-type</td>
+                                        <td>sra $1,$2,10 => $1=$2>>10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sllv</td>
+                                        <td>R-type</td>
+                                        <td>sllv $1,$2,$3 => $1=$2<<$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>srlv</td>
+                                        <td>R-type</td>
+                                        <td>srlv $1,$2,$3 => $1=$2>>$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>srav</td>
+                                        <td>R-type</td>
+                                        <td>srav $1,$2,$3 => $1=$2>>$3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>jr</td>
+                                        <td>R-type</td>
+                                        <td>jr $31 => goto $31</td>
+                                    </tr>
+                                    <tr>
+                                        <td>addi</td>
+                                        <td>I-type</td>
+                                        <td>addi $1,$2,100 => $1=$2+100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>addiu</td>
+                                        <td>I-type</td>
+                                        <td>addiu $1,$2,100 => $1=$2+100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>andi</td>
+                                        <td>I-type</td>
+                                        <td>andi $1,$2,10 => $1=$2 & 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ori</td>
+                                        <td>I-type</td>
+                                        <td>ori $1,$2,10 => $1=$2 | 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>xori</td>
+                                        <td>I-type</td>
+                                        <td>xori $1,$2,10 => $1=$2 ^ 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>lui</td>
+                                        <td>I-type</td>
+                                        <td>lui $1,100 => $1=100*65536</td>
+                                    </tr>
+                                    <tr>
+                                        <td>lw</td>
+                                        <td>I-type</td>
+                                        <td>lw $1,10($2) => $1=memory[$2
+ +10]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sw</td>
+                                        <td>I-type</td>
+                                        <td>sw $1,10($2) => memory[$2+10]
+ =$1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>beq</td>
+                                        <td>I-type</td>
+                                        <td>beq $1,$2,10 => if($1==$2) goto PC+4+40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>bne</td>
+                                        <td>I-type</td>
+                                        <td>bne $1,$2,10 => if($1!=$2) goto PC+4+40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>slti</td>
+                                        <td>I-type</td>
+                                        <td>slti $1,$2,10 => if($2<10){$1=1} else{$1=0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>sltiu</td>
+                                        <td>I-type</td>
+                                        <td>sltiu $1,$2,10 => if($2<10){$1=1} else{$1=0}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>j</td>
+                                        <td>J-type</td>
+                                        <td>j 10000 => goto 10000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>jal</td>
+                                        <td>J-type</td>
+                                        <td>jal 10000 => $31<-PC+4; goto 10000</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Instruction</th>
+                                        <th>Type</th>
+                                        <th>Example</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </main>
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="./published/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="./published/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./published/js/bootstrap.min.js"></script>
+    <!-- JqueryDataTable JavaScript -->
+    <script type="text/javascript" src="./published/DataTables-1.10.23/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#instructions').DataTable();
+        });
+    </script>
+</body>
+</html>

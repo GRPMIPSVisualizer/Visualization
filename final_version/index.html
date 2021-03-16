@@ -1,0 +1,2704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+    <title>Home</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./published/css/fontawesome/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./published/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Code Mirror CSS -->
+    <!--<link href="./published/js/CodeMirror-5.59.2/lib/codemirror.css" rel="stylesheet" type="text/css" />-->
+    <link rel="stylesheet" href="js/code_mirror/lib/codemirror.css">
+    <link href="./css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/Hardware.js"></script>
+    <script type="text/javascript" src="js/TableDisplay.js"></script>
+    <script type="text/javascript">
+        continuePlay = { theFlagData: 0};
+        address = 0;
+        instructionList = {}; // Store all instructions, including syscall
+        instructionMap = {}; // Store mapping relationships between instructions and code mirror.
+        speed = 1.0;
+      lineNum=-1;
+      insNum=0;
+      stepNum=0;
+      sourceIns=[];
+      operator= [];
+      sequenceFlag = 0;
+      getCPU = singleCycleCpu;
+      cpu = new getCPU();
+    </script>
+</head>
+<body>
+
+    <!-- NavMenu -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+            <a class="navbar-brand" href="#">MIPS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item" id="helpPage">
+                        <a class="nav-link" href="help.html">Help</a>
+                    </li>
+                    <li class="nav-item" id="demoPage">
+                        <a class="nav-link" href="#" id="demo">Demo</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <div class="container" style="overflow: hidden;">
+            <div class="row">
+                <div class="card col-sm-12 col-md-9 col-lg-9" style="height: 70vh; overflow-y: scroll; overflow-x: scroll" v-html="log">
+                          <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
+                                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                                <svg
+                                style=" display: inline-block;max-width: 200%;max-height: 200%;min-width: 100%;min-height:100%" 
+                            xmlns:dc="http://purl.org/dc/elements/1.1/"
+                            xmlns:cc="http://creativecommons.org/ns#"
+                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                            xmlns:svg="http://www.w3.org/2000/svg"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                            viewBox="0 0 800 900"
+                            width="720"
+                            height="429"
+
+                            preserveAspectRatio="xMinYMin meet"
+                            version="1.1"
+                            id="svg803"
+                            sodipodi:docname="circuitWithoutPipeline 2.svg"
+                            inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+                        <metadata
+                                id="metadata807">
+                            <rdf:RDF>
+                                <cc:Work
+                                        rdf:about="">
+                                    <dc:format>image/svg+xml</dc:format>
+                                    <dc:type
+                                            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                                </cc:Work>
+                            </rdf:RDF>
+                        </metadata>
+                        <sodipodi:namedview
+                                pagecolor="#ffffff"
+                                bordercolor="#666666"
+                                borderopacity="1"
+                                objecttolerance="10"
+                                gridtolerance="10"
+                                guidetolerance="10"
+                                inkscape:pageopacity="0"
+                                inkscape:pageshadow="2"
+                                inkscape:window-width="1920"
+                                inkscape:window-height="1002"
+                                id="namedview507"
+                                showgrid="false"
+                                inkscape:zoom="2.9663129"
+                                inkscape:cx="207.38267"
+                                inkscape:cy="59.173601"
+                                inkscape:window-x="-8"
+                                inkscape:window-y="-8"
+                                inkscape:window-maximized="0"
+                                inkscape:current-layer="svg803"
+                                inkscape:document-rotation="0" />
+                        <defs
+                                id="defs351">
+                            <symbol
+                                    viewBox="0 0 110 80"
+                                    id="instrMem"
+                                    class="Mem"
+                                    font-size="4">
+                                <rect
+                                        width="100"
+                                        height="50"
+                                        fill="#ffffff"
+                                        style="stroke:#006600;"
+                                        x="0"
+                                        y="0"
+                                        id="rect2" />
+                                <circle
+                                        cx="0"
+                                        cy="25"
+                                        r="1.5"
+                                        id="circle4" />
+                                <text
+                                        x="3"
+                                        y="25"
+                                        id="text8">
+                                    Read
+                                    <tspan
+                                            x="3"
+                                            dy="5"
+                                            id="tspan6">Address</tspan></text>
+
+                                <circle
+                                        cx="100"
+                                        cy="25"
+                                        r="1.5"
+                                        id="circle28" />
+                                <text
+                                        x="102"
+                                        y="30"
+                                        id="text30">
+                                    Instruction[31:0]
+                                </text>
+                                <text
+                                        x="20"
+                                        y="55"
+                                        font-size="6"
+                                        id="text32">
+                                    Instruction Memory
+                                </text>
+
+                                <path
+                                        d="M 3 49.5 l 5 -4 l 5 4"
+                                        fill="#487e95"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="path36" />
+                                <circle
+                                        cx="8"
+                                        cy="49.5"
+                                        r="1.2"
+                                        id="circle38" />
+                                <text
+                                        font-size="4"
+                                        x="10"
+                                        y="54.5"
+                                        fill="#007965"
+                                        stroke="#007965"
+                                        stroke-width="0.4"
+                                        id="text40">
+                                    CLK
+                                </text>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 80 80"
+                                    id="alu"
+                                    class="ALU"
+                                    font-size="4"
+                                    stroke="#007965"
+                                    stroke-width="1">
+                                <path
+                                        d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z "
+                                        fill="none"
+                                        id="path43" />
+                                <text
+                                        x="19"
+                                        y="39"
+                                        stroke="none"
+                                        font-size="5"
+                                        id="text45">
+                                    ALU
+                                </text>
+                                <circle
+                                        cx="10"
+                                        cy="20"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle47" />
+                                <circle
+                                        cx="10"
+                                        cy="56"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle49" />
+                                <circle
+                                        cx="50"
+                                        cy="45"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle51" />
+                                <circle
+                                        cx="50"
+                                        cy="32"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle53" />
+                                <circle
+                                        cx="30"
+                                        cy="58.5"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle55" />
+                                <text
+                                        x="39"
+                                        y="34"
+                                        stroke="#51c2d5"
+                                        stroke-width="0.3"
+                                        fill="#51c2d5"
+                                        id="text57">
+                                    Zero
+                                </text>
+                                <text
+                                        x="36"
+                                        y="47"
+                                        stroke="#51c2d5"
+                                        stroke-width="0.3"
+                                        fill="#51c2d5"
+                                        id="text59">
+                                    Result
+                                </text>
+                                <text
+                                        x="12"
+                                        y="22"
+                                        stroke="#6930c3"
+                                        stroke-width="0.3"
+                                        fill="#6930c3"
+                                        id="text61">
+                                    SrcA
+                                </text>
+                                <text
+                                        x="12"
+                                        y="58"
+                                        stroke="#6930c3"
+                                        stroke-width="0.3"
+                                        fill="#6930c3"
+                                        id="text63">
+                                    SrcB
+                                </text>
+                                <text
+                                        x="32"
+                                        y="62"
+                                        stroke="#184d47"
+                                        stroke-width="0.3"
+                                        fill="#184d47"
+                                        id="text65">
+                                    ALU control
+                                </text>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 60 120"
+                                    id="MUX"
+                                    class="MUX32">
+                                <path
+                                        d="M 16 16  a 15 15 0 0 1 30 0 v 75 a 15 15 0 1 1 -30 0 v -75"
+                                        stroke="#007965"
+                                        fill="none"
+                                        id="path68" />
+                                <text
+                                        y="40"
+                                        font-size="12"
+                                        id="text72"><tspan
+                                        x="25"
+                                        dx="0 -10.4 -8.4"
+                                        dy="5 12 12"
+                                        id="tspan70">MUX</tspan></text>
+                                <circle
+                                        cx="16"
+                                        cy="24"
+                                        r="1.5"
+                                        id="circle74" />
+                                <circle
+                                        cx="16"
+                                        cy="80"
+                                        r="1.5"
+                                        id="circle76" />
+                                <circle
+                                        cx="46"
+                                        cy="52"
+                                        r="1.5"
+                                        id="circle78" />
+                                <circle
+                                        cx="31"
+                                        cy="1.5"
+                                        r="1.5"
+                                        id="circle80" />
+                                <text
+                                        x="19"
+                                        y="27"
+                                        font-size="8"
+                                        id="text82">
+                                    A
+                                </text>
+                                <text
+                                        x="19"
+                                        y="83"
+                                        font-size="8"
+                                        id="text84">
+                                    B
+                                </text>
+                                <text
+                                        x="26"
+                                        y="9"
+                                        font-size="6"
+                                        id="text86">
+                                    Sel
+                                </text>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 60 120"
+                                    id="MUXrft"
+                                    class="MUXrft32">
+                                <path
+                                        d="M 16 16  a 15 15 0 0 1 30 0 v 75 a 15 15 0 1 1 -30 0 v -75"
+                                        stroke="#007965"
+                                        fill="none"
+                                        id="path89" />
+                                <text
+                                        y="40"
+                                        font-size="12"
+                                        id="text93"><tspan
+                                        x="25"
+                                        dx="0 -10.4 -8.4"
+                                        dy="5 12 12"
+                                        id="tspan91">MUX</tspan></text>
+                                <circle
+                                        cx="46"
+                                        cy="24"
+                                        r="1.5"
+                                        id="circle95" />
+                                <circle
+                                        cx="46"
+                                        cy="80"
+                                        r="1.5"
+                                        id="circle97" />
+                                <circle
+                                        cx="16"
+                                        cy="52"
+                                        r="1.5"
+                                        id="circle99" />
+                                <circle
+                                        cx="31"
+                                        cy="1.5"
+                                        r="1.5"
+                                        id="circle101" />
+                                <text
+                                        x="49"
+                                        y="35"
+                                        font-size="8"
+                                        id="text103">
+                                    A
+                                </text>
+                                <text
+                                        x="49"
+                                        y="90"
+                                        font-size="8"
+                                        id="text105">
+                                    B
+                                </text>
+                                <text
+                                        x="26"
+                                        y="9"
+                                        font-size="6"
+                                        id="text107">
+                                    Sel
+                                </text>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 35 65"
+                                    id="PC"
+                                    class="PCRegister">
+                                <rect
+                                        width="30"
+                                        height="60"
+                                        x="0"
+                                        y="0"
+                                        stroke="aliceblue"
+                                        fill="#e7e6e1"
+                                        id="rect110" />
+                                <text
+                                        x="13"
+                                        y="25"
+                                        font-size="8"
+                                        id="text114">
+                                    P
+                                    <tspan
+                                            dx="-8"
+                                            dy="10"
+                                            id="tspan112">
+                                        C
+                                    </tspan></text>
+                                <path
+                                        d="M 0.7 47 l 4 4 l -4 4  "
+                                        fill="#487e95"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="path116" />
+                                <text
+                                        x="6"
+                                        y="53"
+                                        font-size="5"
+                                        id="text118">
+                                    CLK
+                                </text>
+                                <circle
+                                        cx="0.7"
+                                        cy="15"
+                                        r="1.2"
+                                        id="circle120" />
+                                <circle
+                                        cx="30"
+                                        cy="30"
+                                        r="1.2"
+                                        id="circle122" />
+                                <circle
+                                        cx="0.7"
+                                        cy="51"
+                                        r="1.2"
+                                        id="circle124" />
+                            </symbol>
+                            <symbol
+                                    viewBox="-20 -20 60 60"
+                                    id="shiftLeft2"
+                                    class="ShiftLeft2">
+                                <ellipse
+                                        cx="11"
+                                        cy="16"
+                                        rx="10"
+                                        ry="15"
+                                        fill="#e7e6e1"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="ellipse127" />
+                                <text
+                                        x="5"
+                                        y="15"
+                                        font-size="5"
+                                        id="text131">
+                                    Shift
+                                    <tspan
+                                            dx="-13"
+                                            dy="6"
+                                            id="tspan129">
+                                        Left 2
+                                    </tspan></text>
+                                <circle
+                                        cx="1"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle133" />
+                                <circle
+                                        cx="21"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle135" />
+                            </symbol>
+                            <symbol
+                                    viewBox="-20 -20 55 55"
+                                    id="aluControl"
+                                    class="ALUControl">
+                                <ellipse
+                                        cx="11"
+                                        cy="16"
+                                        rx="10"
+                                        ry="15"
+                                        fill="#e7e6e1"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="ellipse138" />
+                                <text
+                                        x="6"
+                                        y="15"
+                                        font-size="4.5"
+                                        id="text142">
+                                    ALU
+                                    <tspan
+                                            dx="-13"
+                                            dy="6"
+                                            id="tspan140">
+                                        Control
+                                    </tspan></text>
+                                <circle
+                                        cx="1"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle144" />
+                                <circle
+                                        cx="21"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle146" />
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 50 50"
+                                    id="signExtend"
+                                    class="SignExtend">
+                                <ellipse
+                                        cx="11"
+                                        cy="16"
+                                        rx="10"
+                                        ry="15"
+                                        fill="#e7e6e1"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="ellipse149" />
+                                <text
+                                        x="6"
+                                        y="15"
+                                        font-size="4.5"
+                                        id="text153">
+                                    Sign-
+                                    <tspan
+                                            dx="-15"
+                                            dy="6"
+                                            id="tspan151">
+                                        Extend
+                                    </tspan></text>
+                                <circle
+                                        cx="1"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle155" />
+                                <circle
+                                        cx="21"
+                                        cy="15"
+                                        r="0.8"
+                                        id="circle157" />
+                            </symbol>
+                            <symbol
+                                    id="adder"
+                                    viewBox="0 0 80 80"
+                                    class="Adder"
+                                    font-size="4"
+                                    stroke="#007965"
+                                    stroke-width="1">
+                                <path
+                                        d="M 10 10 v 20 l 8 8 l -8 8 v 20 l 40 -15 v -26 Z "
+                                        fill="none"
+                                        id="path160" />
+                                <text
+                                        x="19"
+                                        y="39"
+                                        stroke="none"
+                                        font-size="7"
+                                        id="text162">
+                                    Adder
+                                </text>
+                                <circle
+                                        cx="50"
+                                        cy="38"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle164" />
+                                <text
+                                        x="37"
+                                        y="43"
+                                        stroke="#51c2d5"
+                                        stroke-width="0.3"
+                                        fill="#51c2d5"
+                                        id="text166">
+                                    Result
+                                </text>
+                                <text
+                                        x="12"
+                                        y="22"
+                                        stroke="#6930c3"
+                                        stroke-width="0.3"
+                                        fill="#6930c3"
+                                        id="text168">
+                                    SrcA
+                                </text>
+                                <text
+                                        x="12"
+                                        y="58"
+                                        stroke="#6930c3"
+                                        stroke-width="0.3"
+                                        fill="#6930c3"
+                                        id="text170">
+                                    SrcB
+                                </text>
+                                <circle
+                                        cx="10"
+                                        cy="20"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle172" />
+                                <circle
+                                        cx="10"
+                                        cy="56"
+                                        r="1"
+                                        stroke="none"
+                                        id="circle174" />
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 110 110"
+                                    id="reg"
+                                    class="Reg">
+                                <rect
+                                        width="100"
+                                        height="100"
+                                        fill="#ffffff"
+                                        style="stroke:#006600;"
+                                        x="0"
+                                        y="0"
+                                        id="rect177" />
+
+                                <path
+                                        d="M 15 100 l 5 -4 l 5 4"
+                                        fill="#487e95"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="path181" />
+                                <circle
+                                        cx="0"
+                                        cy="12.5"
+                                        r="1.5"
+                                        id="circle183" />
+                                <circle
+                                        cx="0"
+                                        cy="37.5"
+                                        r="1.5"
+                                        id="circle185" />
+                                <circle
+                                        cx="0"
+                                        cy="60"
+                                        r="1.5"
+                                        id="circle187" />
+                                <circle
+                                        cx="0"
+                                        cy="85"
+                                        r="1.5"
+                                        id="circle189" />
+                                <circle
+                                        cx="20"
+                                        cy="100"
+                                        r="1.5"
+                                        id="circle191" />
+                                <circle
+                                        cx="50"
+                                        cy="0"
+                                        r="1.5"
+                                        id="circle193" />
+                                <circle
+                                        cx="100"
+                                        cy="25"
+                                        r="1.5"
+                                        id="circle195" />
+                                <circle
+                                        cx="100"
+                                        cy="75"
+                                        r="1.5"
+                                        id="circle197" />
+
+                                <text
+                                        font-size="3.3"
+                                        x="2"
+                                        y="13"
+                                        id="text217">
+                                    Read
+                                    <tspan
+                                            dx="-10.5"
+                                            dy="5"
+                                            id="tspan215">
+                                        Register1
+                                    </tspan></text>
+                                <text
+                                        font-size="3.3"
+                                        x="2"
+                                        y="38"
+                                        id="text221">
+                                    Read
+                                    <tspan
+                                            dx="-10.5"
+                                            dy="5"
+                                            id="tspan219">
+                                        Register2
+                                    </tspan></text>
+                                <text
+                                        font-size="3.3"
+                                        x="2"
+                                        y="60"
+                                        id="text225">
+                                    Wirte
+                                    <tspan
+                                            dx="-10.5"
+                                            dy="5"
+                                            id="tspan223">
+                                        Register
+                                    </tspan></text>
+                                <text
+                                        font-size="3.3"
+                                        x="2"
+                                        y="85"
+                                        id="text229">
+                                    Wirte
+                                    <tspan
+                                            dx="-9"
+                                            dy="5"
+                                            id="tspan227">
+                                        Data
+                                    </tspan></text>
+                                <text
+                                        font-size="4"
+                                        x="22"
+                                        y="105"
+                                        fill="#007965"
+                                        stroke="#007965"
+                                        stroke-width="0.4"
+                                        id="text231">
+                                    CLK
+                                </text>
+                                <text
+                                        font-size="4"
+                                        x="87"
+                                        y="24"
+                                        id="text235">
+                                    Read
+                                    <tspan
+                                            dx="-11"
+                                            dy="5"
+                                            id="tspan233">
+                                        Data 1
+                                    </tspan></text>
+                                <text
+                                        font-size="4"
+                                        x="87"
+                                        y="74"
+                                        id="text239">
+                                    Read
+                                    <tspan
+                                            dx="-12"
+                                            dy="5"
+                                            id="tspan237">
+                                        Data 2
+                                    </tspan></text>
+                                <text
+                                        font-size="4"
+                                        x="42"
+                                        y="5"
+                                        id="text241">
+                                    RegWrite
+                                </text>
+                                <text
+                                        x="90"
+                                        y="35"
+                                        font-size="6"
+                                        fill="#007965"
+                                        stroke="#007965"
+                                        stroke-width="0.4"
+                                        id="text245"><tspan
+                                        dx="0 -3.6 -3.4 -2.7 -2.3 -2.5 -2.6 -2.9"
+                                        dy="0 4.5 4.5 7 4.5 4.8 4.5 4.5"
+                                        id="tspan243">
+                                    Register
+                                </tspan></text>
+                            </symbol>
+                            <symbol
+                                    viewBox="-10 -10 200 200"
+                                    id="dataMem"
+                                    class="DataMem"
+                                    font-size="4">
+                                <rect
+                                        width="100"
+                                        height="50"
+                                        fill="#ffffff"
+                                        style="stroke:#006600;"
+                                        x="0"
+                                        y="0"
+                                        id="rect248" />
+                                <circle
+                                        cx="100"
+                                        cy="13"
+                                        r="1.5"
+                                        id="circle250" />
+                                <text
+                                        x="102"
+                                        y="18"
+                                        id="text252">
+                                    Address
+                                </text>
+                                <circle
+                                        cx="100"
+                                        cy="38"
+                                        r="1.5"
+                                        id="circle254" />
+                                <text
+                                        x="102"
+                                        y="43"
+                                        id="text258">
+                                    Write
+                                    <tspan
+                                            x="102"
+                                            dy="5"
+                                            id="tspan256">Data</tspan></text>
+
+                                <circle
+                                        cx="0"
+                                        cy="25"
+                                        r="1.5"
+                                        id="circle278" />
+                                <text
+                                        x="2"
+                                        y="30"
+                                        id="text282">
+                                    Read
+                                    <tspan
+                                            x="2"
+                                            dy="5"
+                                            id="tspan280">
+                                        Data
+                                    </tspan></text>
+                                <text
+                                        x="30"
+                                        y="57"
+                                        font-size="6"
+                                        id="text284">
+                                    Data Memory
+                                </text>
+
+                                <circle
+                                        cy="0"
+                                        cx="33"
+                                        r="1.5"
+                                        id="circle288" />
+                                <circle
+                                        cy="0"
+                                        cx="66"
+                                        r="1.5"
+                                        id="circle290" />
+                                <text
+                                        x="26"
+                                        y="5"
+                                        id="text292">
+                                    MemRead
+                                </text>
+                                <text
+                                        x="58"
+                                        y="5"
+                                        id="text294">
+                                    MemWrite
+                                </text>
+                                <path
+                                        d="M 3 49.5 l 5 -4 l 5 4"
+                                        fill="#487e95"
+                                        stroke="black"
+                                        stroke-width="0.5"
+                                        id="path296" />
+                                <circle
+                                        cx="8"
+                                        cy="49.5"
+                                        r="1.2"
+                                        id="circle298" />
+                                <text
+                                        font-size="4"
+                                        x="11"
+                                        y="54.5"
+                                        fill="#007965"
+                                        stroke="#007965"
+                                        stroke-width="0.4"
+                                        id="text300">
+                                    CLK
+                                </text>
+                                <marker
+                                        id="markerCircle"
+                                        markerWidth="8"
+                                        markerHeight="8"
+                                        refX="5"
+                                        refY="5">
+                                    <circle
+                                            cx="5"
+                                            cy="5"
+                                            r="1"
+                                            style="stroke: none; fill:#000000;"
+                                            id="circle302" />
+                                </marker>
+                                <marker
+                                        id="markerArrow"
+                                        markerwidth="13"
+                                        markerheight="13"
+                                        refX="0"
+                                        refY="1.5"
+                                        orient="auto">
+                                    <path
+                                            d="M0,0 L0,3 L2,1.5 Z"
+                                            style="fill: #000000;"
+                                            id="path305" />
+                                </marker>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 210 210"
+                                    id="control"
+                                    class="Control"
+                                    font-size="4">
+                                <ellipse
+                                        cx="52"
+                                        cy="102"
+                                        rx="50"
+                                        ry="100"
+                                        fill="none"
+                                        stroke="#007965"
+                                        stroke-width="2"
+                                        id="ellipse309" />
+                                <circle
+                                        cx="80"
+                                        cy="20"
+                                        r="3"
+                                        id="circle311" />
+                                <circle
+                                        cx="92"
+                                        cy="42"
+                                        r="3"
+                                        id="circle313" />
+                                <circle
+                                        cx="98.5"
+                                        cy="65"
+                                        r="3"
+                                        id="circle315" />
+                                <circle
+                                        cx="102"
+                                        cy="89"
+                                        r="3"
+                                        id="circle317" />
+                                <circle
+                                        cx="102"
+                                        cy="115"
+                                        r="3"
+                                        id="circle319" />
+                                <circle
+                                        cx="99"
+                                        cy="137"
+                                        r="3"
+                                        id="circle321" />
+                                <circle
+                                        cx="94.5"
+                                        cy="155"
+                                        r="3"
+                                        id="circle323" />
+                                <circle
+                                        cx="86"
+                                        cy="175"
+                                        r="3"
+                                        id="circle325" />
+                                <circle
+                                        cx="75"
+                                        cy="191"
+                                        r="3"
+                                        id="circle327" />
+                                <text
+                                        font-size="22"
+                                        x="45"
+                                        y="60"
+                                        fill="#007965"
+                                        stroke="#007965"
+                                        stroke-width="0.4"
+                                        id="text343"><tspan
+                                        id="tspan329">C</tspan><tspan
+                                        x="46"
+                                        dy="16"
+                                        id="tspan331">o</tspan><tspan
+                                        x="46"
+                                        dy="15"
+                                        id="tspan333">n</tspan><tspan
+                                        x="48.5"
+                                        dy="19"
+                                        id="tspan335">t</tspan><tspan
+                                        x="48.5"
+                                        dy="17"
+                                        id="tspan337">r</tspan><tspan
+                                        x="46"
+                                        dy="15"
+                                        id="tspan339">o</tspan><tspan
+                                        x="49.5"
+                                        dy="20"
+                                        id="tspan341">l</tspan></text>
+                            </symbol>
+                            <symbol
+                                    viewBox="0 0 50 50"
+                                    id="and"
+                                    class="And"
+                                    font-size="4">
+                                <path
+                                        d="M10 10 l 15 0 c 30 0 30 30 0 30 l -15 0 Z"
+                                        fill="none"
+                                        stroke="#03DCDA"
+                                        stroke-width="1.5"
+                                        id="path346" />
+                                <text
+                                        font-size="10"
+                                        x="16"
+                                        y="28"
+                                        id="text348">
+                                    And
+                                </text>
+                            </symbol>
+                        </defs>
+                        <path
+                                d="m 109.33561,509.16752 h 71.79487"
+                                class="wire"
+                                id="pc2insMem"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 508.19601,509.16752 h 55.84046 V 214.01083 m 0,0 h 101.7094 m -101.7094,72.99145 h 101.7094"
+                                class="wire"
+                                id="insMem2reg"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 583.97949,287.8 v 35.89744 h 21.93732"
+                                class="wire"
+                                id="ins2mux1A"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 564.03647,379.53789 h 41.88034"
+                                class="wire"
+                                id="ins2mux1B"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 635.83134,351.61766 h 31.90883"
+                                class="wire"
+                                id="mux1toreg"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 958.90826,250.70598 h 97.72084"
+                                class="wire"
+                                id="regRD1toAluSrcA"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 958.90826,395.4923 H 992.8114"
+                                class="wire"
+                                id="regRD2tomux2"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1022.7259,423.41253 h 11.9658 v -65.01424 h 19.9431"
+                                class="wire"
+                                id="mux2toAluSrcB"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 966.88547,395.4923 v 87.74929 H 1365.7459 V 648.3698 h -63.8177"
+                                class="wire"
+                                id="regRD2toDMWD"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1174.2929,325.69174 h 159.5441 v 151.56695 c 11.9658,0 11.9658,11.96581 0,11.96581 v 79.77208 h -33.9031"
+                                class="wire"
+                                id="alu2DMAddr"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1226.1447,325.69174 v 151.56695 c 11.9658,0 11.9658,11.96581 0,11.96581 v 27.92023 H 907.05641 v 81.76638 h -43.87464"
+                                class="wire"
+                                id="alu2mux3"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 978.85128,606.88832 h -39.88604 v 47.86324 h -75.78347"
+                                class="wire"
+                                id="DMRD2mux3"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 833.26724,626.83134 H 649.79145 V 425.40683 h 15.95442"
+                                class="wire"
+                                id="mux3toRegWD"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 129.27863,509.16752 V 70.421085 h 79.77208"
+                                class="wire"
+                                id="pc2adder1"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 149.22165,142.21595 h 50.25641"
+                                class="wire"
+                                id="const4"
+                                stroke="#161d6f"
+                                stroke-width="3.9886"
+                                style="marker-start:url(#markerCircle);marker-end:url(#markerArrow)" />
+                        <text
+                                x="145.23305"
+                                y="135.43532"
+                                font-size="11.9658px"
+                                font-style="italic"
+                                id="text368"
+                                style="stroke-width:3.9886">4</text>
+                        <path
+                                d="m 564.03647,499.19601 h 79.77208 c 0,-11.96581 11.96581,-11.96581 11.96581,0 h 327.06553 v -9.97151 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -25.92593 h 9.97151"
+                                class="wire"
+                                id="ins2mux2"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 982.83989,451.33276 v -49.85755 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 256.68889 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 v -49.05983 h 19.94301"
+                                class="wire"
+                                id="ins2shift1"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1050.6462,196.06211 h 31.9088"
+                                class="wire"
+                                id="shift1toadder2"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 763.46667,499.19601 v 47.86325 H 883.12479 V 507.17322 H 1042.6689 V 489.2245 c -11.9658,0 -11.9658,-11.96581 0,-11.96581 v -41.88035 h 23.9317"
+                                class="wire"
+                                id="ins2aluCtl"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1098.5094,435.37834 h 17.9487 v -71.79486"
+                                class="wire"
+                                id="aluCtl2alu"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 288.82279,106.31852 H 1081.7573"
+                                class="wire"
+                                id="adder1toadder2"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 946.94245,106.31852 V 66.432481 h 279.20225 v 97.720799 h 32.7066"
+                                class="wire"
+                                id="adder1tomux4"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1184.6632,151.38974 h 19.9431 v 77.77778 h 55.8404"
+                                class="wire"
+                                id="adder2tomux4"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1293.951,196.85983 h 65.4131"
+                                class="wire"
+                                id="mux4tomux5"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 556.05926,509.16752 V 158.17037 h 41.88034"
+                                class="wire"
+                                id="ins2shift2"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 643.80855,158.17037 h 99.7151"
+                                class="wire"
+                                id="shift2tojmpaddr"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 667.74017,106.31852 v 31.90883 h 71.79487 v 16.75214"
+                                class="wire"
+                                id="adder1tojmpaddr"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 739.53504,158.17037 h 191.45299 v -45.86895 c -11.96581,0 -11.96581,-11.96581 0,-11.96581 V 52.472367 H 1309.9054 V 190.47806 c 11.9658,0 11.9658,11.96581 0,11.96581 v 59.82906 h 49.8576"
+                                class="wire"
+                                id="jmpAddr2mux5"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="m 1394.8627,229.16752 h 19.943 V 9.794302 H 18.794301 V 472.0735 h 17.948723"
+                                class="wire"
+                                id="mux5toPc"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <path
+                                d="M 524.15043,509.16752 V 389.5094 H 398.11054 v -22.33618"
+                                class="wire"
+                                id="ins2ctl"
+                                fill="none"
+                                stroke="#161d6f"
+                                stroke-width="3.9886" />
+                        <circle
+                                cx="129.27863"
+                                cy="509.16751"
+                                r="3.9886041"
+                                id="circle385"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="564.03644"
+                                cy="509.16751"
+                                r="3.9886041"
+                                id="circle387"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="564.03644"
+                                cy="214.01083"
+                                r="3.9886041"
+                                id="circle389"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="564.03644"
+                                cy="287.00229"
+                                r="3.9886041"
+                                id="circle391"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="583.97949"
+                                cy="287.00229"
+                                r="3.9886041"
+                                id="circle393"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="564.03644"
+                                cy="379.53793"
+                                r="3.9886041"
+                                id="circle395"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="966.88556"
+                                cy="395.49231"
+                                r="3.9886041"
+                                id="circle397"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="1226.1448"
+                                cy="325.69174"
+                                r="3.9886041"
+                                id="circle399"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="564.03644"
+                                cy="499.19601"
+                                r="3.9886041"
+                                id="circle401"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="982.8399"
+                                cy="451.33276"
+                                r="3.9886041"
+                                id="circle403"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="763.46667"
+                                cy="499.19601"
+                                r="3.9886041"
+                                id="circle405"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="946.94244"
+                                cy="106.31851"
+                                r="3.9886041"
+                                id="circle407"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="524.15051"
+                                cy="509.16751"
+                                r="3.9886041"
+                                id="circle409"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="556.05927"
+                                cy="509.16751"
+                                r="3.9886041"
+                                id="circle411"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="667.74017"
+                                cy="106.31851"
+                                r="3.9886041"
+                                id="circle413"
+                                style="stroke-width:3.9886" />
+                        <circle
+                                cx="739.53503"
+                                cy="158.17036"
+                                r="3.9886041"
+                                id="jumpAddr"
+                                style="stroke-width:3.9886" />
+                        <!-- control -->
+                        <path
+                                d="m 424.43533,195.26439 h 39.88604 V 23.754418 H 1376.914 V 171.33276"
+                                class="CtlWire"
+                                id="Jump"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 1176.2872,287.00228 h 39.886 V 91.560686 h 15.9544"
+                                class="CtlWire"
+                                id="isZero"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 1271.6148,81.988033 h 5.5841 v 55.840457"
+                                class="CtlWire"
+                                id="BranchAndZero"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="M 436.40114,216.00513 H 496.2302 V 40.506555 h 719.5442 v 33.903134 h 17.5498"
+                                class="CtlWire"
+                                id="Branch"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 444.37835,237.94245 h 79.77208 V 60.449575 H 994.8057 V 339.65185 h 12.963 v 33.90314"
+                                class="CtlWire"
+                                id="ALUSrc"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 448.36695,260.67749 h 95.7265 V 81.190312 H 812.5265 v 99.715098"
+                                class="CtlWire"
+                                id="RegWrite"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 446.77151,285.8057 h 71.79487 v 15.95441 h 23.93162 7.97721 55.84046 v -7.9772 h 14.5584 v 7.9772"
+                                class="CtlWire"
+                                id="RegDst"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 444.37835,306.54644 h 103.7037 v 230.14245 h 398.8604 V 492.81424 H 1082.555 v -29.91453"
+                                class="CtlWire"
+                                id="ALUOp"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 440.38974,323.29858 h 99.7151 V 554.6376 h 422.79203 v -51.85185 h 226.55273 v 23.93163"
+                                class="CtlWire"
+                                id="MemWrite"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 428.42393,342.44387 h 103.7037 V 565.8057 h 438.74645 v -53.84616 h 112.87752 v 11.96581"
+                                class="CtlWire"
+                                id="MemRead"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <path
+                                d="m 420.44672,357.60057 h 95.7265 v 214.58689 h 331.97151 v 3.98861"
+                                class="CtlWire"
+                                id="MemtoReg"
+                                fill="none"
+                                stroke="#03dcda"
+                                stroke-width="2.79202" />
+                        <text
+                                font-size="11.9658px"
+                                x="540.10486"
+                                y="152.18747"
+                                id="text427"
+                                style="stroke-width:3.9886">Ins[25:0]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="579.99091"
+                                y="176.11909"
+                                id="text429"
+                                style="stroke-width:3.9886">26</text>
+                        <text
+                                font-size="11.9658px"
+                                x="647.79724"
+                                y="176.11909"
+                                id="text431"
+                                style="stroke-width:3.9886">28</text>
+                        <text
+                                font-size="11.9658px"
+                                x="672.52649"
+                                y="132.24445"
+                                id="text433"
+                                style="stroke-width:3.9886">PC + 4 [31:28]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="576.00226"
+                                y="493.2131"
+                                id="text435"
+                                style="stroke-width:3.9886">Ins [15:0]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="827.2843"
+                                y="541.87408"
+                                id="text437"
+                                style="stroke-width:3.9886">Ins [5:0]</text>
+                        <text
+                                font-size="7.97721px"
+                                x="566.03076"
+                                y="375.54929"
+                                id="text439"
+                                style="stroke-width:3.9886">Ins [15:11]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="587.96808"
+                                y="279.82278"
+                                id="text441"
+                                style="stroke-width:3.9886">Ins [20:16]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="587.96808"
+                                y="208.02792"
+                                id="text443"
+                                style="stroke-width:3.9886">Ins [25:21]</text>
+                        <text
+                                font-size="15.9544px"
+                                x="408.48093"
+                                y="383.52649"
+                                id="text445"
+                                style="stroke-width:3.9886">Ins [31:26]</text>
+                        <text
+                                font-size="11.9658px"
+                                x="771.44385"
+                                y="495.2074"
+                                id="text447"
+                                style="stroke-width:3.9886">16</text>
+                        <text
+                                font-size="11.9658px"
+                                x="835.26154"
+                                y="495.2074"
+                                id="text449"
+                                style="stroke-width:3.9886">32</text>
+                        <text
+                                font-size="11.9658px"
+                                x="672.52649"
+                                y="172.13048"
+                                id="text451"
+                                style="stroke-width:3.9886">Jump address [31–0]</text>
+                        <use
+                                xlink:href="#PC"
+                                width="25"
+                                height="40"
+                                x="20"
+                                y="115"
+                                id="use453"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#instrMem"
+                                width="130"
+                                height="65"
+                                x="38"
+                                y="113"
+                                id="use455"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#reg"
+                                width="160"
+                                height="80"
+                                x="140"
+                                y="50.5"
+                                id="use457"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#alu"
+                                width="60"
+                                height="60"
+                                x="270"
+                                y="53.700001"
+                                id="use459"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#dataMem"
+                                width="160"
+                                height="160"
+                                x="250"
+                                y="130"
+                                id="use461"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#MUX"
+                                id="mux1"
+                                width="30"
+                                height="30"
+                                x="153"
+                                y="81"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#MUX"
+                                id="mux2"
+                                width="30"
+                                height="30"
+                                x="250"
+                                y="99"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#MUXrft"
+                                id="mux3"
+                                width="30"
+                                height="30"
+                                x="210"
+                                y="150"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#adder"
+                                id="adder1"
+                                width="40"
+                                height="40"
+                                x="60"
+                                y="13.5"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#control"
+                                id="ctl"
+                                width="50"
+                                height="50"
+                                x="100"
+                                y="50"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#aluControl"
+                                id="aluCtl"
+                                width="25"
+                                height="25"
+                                x="270"
+                                y="99"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#signExtend"
+                                id="signExd"
+                                width="25"
+                                height="25"
+                                x="210"
+                                y="123.5"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#adder"
+                                id="adder2"
+                                width="50"
+                                height="50"
+                                x="278"
+                                y="20"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#shiftLeft2"
+                                id="shift1"
+                                width="35"
+                                height="35"
+                                x="252"
+                                y="34.5"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#shiftLeft2"
+                                id="shift2"
+                                width="35"
+                                height="35"
+                                x="150"
+                                y="25"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#MUX"
+                                id="mux4"
+                                width="35"
+                                height="35"
+                                x="315"
+                                y="40"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#MUX"
+                                id="mux5"
+                                width="35"
+                                height="35"
+                                x="340"
+                                y="48.200001"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <use
+                                xlink:href="#and"
+                                id="and1"
+                                width="13"
+                                height="13"
+                                x="319"
+                                y="20"
+                                transform="matrix(3.988604,0,0,3.988604,-50.208552,-23.311117)" />
+                        <!--
+                        <use xlink:href="#dataMem" x="50" y="50" ></use> -->
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data1"
+                                            class="dataCircle"
+                                            cx="98.183578"
+                                            cy="508.23593"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data2"
+                                            class="dataCircle"
+                                            cx="98.643005"
+                                            cy="509.6142"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data3"
+                                            class="dataCircle"
+                                            cx="148.26018"
+                                            cy="142.07948"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data4"
+                                            class="dataCircle"
+                                            cx="495.58044"
+                                            cy="508.69537"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data5"
+                                            class="dataCircle"
+                                            cx="495.52841"
+                                            cy="509.04526"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data6"
+                                            class="dataCircle"
+                                            cx="496.44724"
+                                            cy="509.95148"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data7"
+                                            class="dataCircle"
+                                            cx="277.81616"
+                                            cy="105.32601"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data8"
+                                            class="dataCircle"
+                                            cx="943.05389"
+                                            cy="251.42107"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data9"
+                                            class="dataCircle"
+                                            cx="943.97278"
+                                            cy="396.59723"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data10"
+                                            class="dataCircle"
+                                            cx="945.07568"
+                                            cy="396.31183"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data11"
+                                            class="dataCircle"
+                                            cx="1385.9792"
+                                            cy="228.86066"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data12"
+                                            class="dataCircle"
+                                            cx="1163.6656"
+                                            cy="324.8364"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data14"
+                                            class="dataCircle"
+                                            cx="148.23552"
+                                            cy="144.96017"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data18"
+                                            class="dataCircle"
+                                            cx="629.83954"
+                                            cy="352.68817"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data19"
+                                            class="dataCircle"
+                                            cx="495.49219"
+                                            cy="510.12164"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data42"
+                                            class="dataCircle"
+                                            cx="496.38303"
+                                            cy="510.51505"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data20"
+                                            class="dataCircle"
+                                            cx="496.72937"
+                                            cy="510.12164"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data21"
+                                            class="dataCircle"
+                                            cx="817.67816"
+                                            cy="500.28992"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data22"
+                                            class="dataCircle"
+                                            cx="1164.3547"
+                                            cy="326.95172"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data23"
+                                            class="dataCircle"
+                                            cx="993.40735"
+                                            cy="606.68378"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data24"
+                                            class="dataCircle"
+                                            cx="944.39441"
+                                            cy="397.48242"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data25"
+                                            class="dataCircle"
+                                            cx="817.6781"
+                                            cy="500.28998"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data72"
+                                            class="dataCircle"
+                                            cx="278.53641"
+                                            cy="105.796"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data26"
+                                            class="dataCircle"
+                                            cx="1041.2247"
+                                            cy="196.64915"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data27"
+                                            class="dataCircle"
+                                            cx="1041.5797"
+                                            cy="195.71999"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data28"
+                                            class="dataCircle"
+                                            cx="496.38303"
+                                            cy="510.51505"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data29"
+                                            class="dataCircle"
+                                            cx="635.86108"
+                                            cy="157.69553"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data73"
+                                            class="dataCircle"
+                                            cx="278.49872"
+                                            cy="106.98726"
+                                            r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data30"
+                                            class="dataCircle"
+                                            cx="634.38879"
+                                            cy="157.61679"
+                                            r="7.810112" />
+                        <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
+                            <body xmlns= "http://www.w3.org/1999/xhtml">
+                            <div id="instructionTable" class="scrollable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
+                                <table id="IMTable" bgcolor="white">
+                                    <thead>
+                                    <tr>
+                                        <th width="43%">PC Address</th>
+                                        <th>Machine Code</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            </body>
+                        </foreignObject>
+                        <foreignObject   width="204" height="260" x="720" y="200" fill="#e7e6e1">
+                            <body xmlns= "http://www.w3.org/1999/xhtml">
+                            <div id="registerTable" class="scrollable" style="width: 196px; height: 252px; overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
+                                <table bgcolor="white" id="rTable">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 40%">Register</th>
+                                        <th>32-bits Data</th>
+                                    </tr>
+                                    </thead>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$zero</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$at</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$v0</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$v1</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$a0</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$a1</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$a2</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$a3</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t0</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t1</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t2</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t3</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t4</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t5</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t6</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t7</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s0</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s1</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s2</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s3</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s4</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s5</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s6</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$s7</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t8</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td contenteditable="false">$t9</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$k0</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$k1</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$gp</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$sp</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$fp</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                    <tr bgcolor="#F9F9F9">
+                                        <td contenteditable="false">$ra</td>
+                                        <td contenteditable="false">00000000000000000000000000000000</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </body>
+                        </foreignObject>
+                        <foreignObject   width="244" height="132" x="1038" y="548">
+                            <body xmlns= "http://www.w3.org/1999/xhtml">
+                            <table class="dataMem" style="width: 100%; height: 98%;">
+                                <tr>
+                                    <td id="dynamicMemory" style="text-align: center">Dynamic</td>
+                                </tr>
+                                <tr>
+                                    <td id="staticMemory" style="text-align: center">Static</td>
+                                </tr>
+                            </table>
+                            </body>
+                        </foreignObject>
+
+                        <foreignObject width="400" height="400" x="1046" y="156">
+                            <body  xmlns= "http://www.w3.org/1999/xhtml">
+                            <div id="dynamicTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
+                                <table id="DMTable" bgcolor="white">
+                                    <tbody id="dm">
+                                        <tr>
+                                            <th width="30%">Address</th>
+                                            <th>32-bits Data</th>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            </body>
+                        </foreignObject>
+                        <foreignObject width="400" height="400" x="646" y="460">
+                            <body xmlns= "http://www.w3.org/1999/xhtml">
+                            <div id="staticTable" class="scrollable" style="background: #FFF; width: 392px; height: 392px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue; display: none">
+                                <table id="SMTable" bgcolor="white">
+                                    <tbody id="sm">
+                                        <tr>
+                                            <th width="30%">Address</th>
+                                            <th>32-bits Data</th>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            </body>
+                        </foreignObject>
+
+                    </svg>
+
+                          </div>
+                </div>
+                <div class="card col-sm-12 col-md-3 col-lg-3" style="height: 70vh" v-html="log">
+                        <div class="card-body">
+                        <input type="file" name="file" id="file" accept=".asm, .s, .txt" style="display:none">
+                        <a type="button" id="uploadFileButton" class="fas fa-upload" title="upload"></a>
+                        <a type="button" id="downloadFileButton" class="fas fa-download" title="download"></a>
+                        <a type="button" id="compile" class="fas fa-tools" title="compile"></a>
+                        <a type="button" id="redo" class="fas fa-redo-alt" title="redo"></a>
+                    </div>
+                    <textarea id="code" name="code" style="display: none;"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card col-sm-12 col-md-12 col-lg-12" style="height: 30vh" v-html="log">
+                    <p class="card-body">
+                        <a type="button" id="fw" class="fas fa-step-forward 1" title="one step forward"></a>
+                        <!--<a type="button" class="fas fa-step-forward"> EXECUTE </a>-->
+                        <a type="button" id="play" class="fas fa-play-circle" title="play" ></a>
+                        <a type="button" id="pause" class="fas fa-pause pause" title="pause"></a>
+                        <a type="button" id="halfSpeed" class="btn btn-primary half" title="half Speed" style="margin-left: 7px">0.5 x</a>
+                        <input id="playSpeed" style="text-align: center; width: 40px" readonly>
+                        <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
+                        <input id="dataInfo" name="dataInfo" style="margin-left: 7px" readonly>
+                        </p><div id="superToggler" class="toggler"></div>
+                        <textarea id="displayArea"></textarea>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="./published/js/jquery-3.6.0.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="./published/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./published/js/bootstrap.min.js"></script>
+    <!-- R instructions -->
+    <script id="R" type="text/javascript" src="./js/R-add,sub,and,or,slt  instruction.js"></script>
+    <!-- I instructions -->
+    <script id="ADDI" type="text/javascript" src="./js/I-Addi instruction.js"></script>
+    <script id="BEQ" type="text/javascript" src="./js/I-BEQ instruction.js"></script>
+    <script id="LW" type="text/javascript" src="./js/I-LW instruction.js"></script>
+    <script id="SW" type="text/javascript" src="./js/I-SW instruction.js"></script>
+    <!-- J instructions -->
+    <script id="J" type="text/javascript" src="./js/J instruction.js"></script>
+    <!-- Animation Speed Change -->
+    <script type="text/javascript" src="./js/changeAnimationSpeed.js"></script>
+    <!-- CodeMirror -->
+    <!--<script type="text/javascript" src="./published/js/CodeMirror-5.59.2/lib/codemirror.js"></script>-->
+    <script src="js/code_mirror/lib/codemirror.js"></script>
+    <!-- hammer -->
+    <script type="text/javascript" src="./published/js/hammer.min.js"></script>
+    <!-- Hardware -- >
+    <script type="text/javascript" src="./js/Hardware.js"></script>
+    <!- Assembler -->
+    <!--<script type="text/javascript" src="./js/Assembler/js/ArrayList.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Assembler.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/BinaryAddition.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/DecimalToBinary.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Decoder.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/DecoderForI.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/DecoderForJ.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/DecoderForR.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Instruction.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/InstructionI.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/InstructionR.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/List.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Main.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForCommaNum.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForI.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForInsType.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForJ.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForR.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/MapForRegister.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Stack.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/Student.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/TransformZeroOne.js"></script>
+    <script type="text/javascript" src="./js/Assembler/js/TrimSpace.js"></script>-->
+
+    <script src="js/code_mirror/mode/mips/mips.js"></script>
+     <script>
+        $(document).ready(function() {
+            Object.defineProperty(continuePlay, 'theFlagData', {
+                set:function(newValue){
+                    if(newValue != 0){
+                        highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+                        if(cpu.Errormsg != ""){
+                            alert(cpu.Errormsg);
+                            let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
+                            $("#displayArea").val(temp);
+                            return false;
+                        }
+                        let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
+                        cpu.oneClockCycle();
+                        address = cpu.getCurrentInsAddr();
+                        address = parseInt(address, 2).toString(16);
+                        if(instructionMap[address] == undefined){
+                            CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                            $('#uploadFileButton').css("pointer-events", "auto");
+                            $('#compile').css("pointer-events", "auto");
+                            $('#fw').css("pointer-events", "none");
+                            $('#play').css("pointer-events", "none");
+                            $('#pause').css("pointer-events", "none");
+                            $('#halfSpeed').css("pointer-events", "none");
+                            $('#doubleSpeed').css("pointer-events", "none");
+                            let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                            $("#displayArea").val(temp);
+                            continuePlay.theFlagData = 0;
+                            return;
+                        }
+                        if(instructionMap[a] == instructionMap[address]){
+                            let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
+                            $("#displayArea").val(temp);
+                        }
+                        else{
+                            let l = instructionMap[a];
+                            let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                            $("#displayArea").val(temp);
+                        }
+                        lineNum = instructionMap[address];
+                        highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                        if(instructionList[address] == "00000000000000000000000000001100"){
+                            console.log('syscall finished');
+                            continueToPlay();
+                        }
+                        else{
+                            reverseCompileAndPlay(instructionList[address].substring(0,6));
+                        }
+                    }
+                }
+            })
+        $('#playSpeed').val(parseFloat(speed).toFixed(2));
+
+        function continueToPlay(){
+            highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+            if(cpu.Errormsg != ""){
+                alert(cpu.Errormsg);
+                let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
+                $("#displayArea").val(temp);
+                return false;
+            }
+            let a =  parseInt(cpu.getCurrentInsAddr(), 2).toString(16);
+            cpu.oneClockCycle();
+            address = cpu.getCurrentInsAddr();
+            address = parseInt(address, 2).toString(16);
+            if(instructionMap[address] == undefined){
+                CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                $('#uploadFileButton').css("pointer-events", "auto");
+                $('#compile').css("pointer-events", "auto");
+                $('#fw').css("pointer-events", "none");
+                $('#play').css("pointer-events", "none");
+                $('#pause').css("pointer-events", "none");
+                $('#halfSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("pointer-events", "none");
+                let temp = $("#displayArea").val() +  "Finished running."+ "\n" ;
+                $("#displayArea").val(temp);
+                continuePlay.theFlagData = 0;
+                return;
+            }
+            if(instructionMap[a] == instructionMap[address]){
+                let temp = $("#displayArea").val() + "Pseudo code running......"+ "\n" ;
+                $("#displayArea").val(temp);
+            }
+            else{
+                let l = instructionMap[a];
+                let temp = $("#displayArea").val() + "Line " + l + " animation finished."+ "\n" ;
+                $("#displayArea").val(temp);
+            }
+            lineNum = instructionMap[address];
+            highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+            if(instructionList[address] == "00000000000000000000000000001100"){
+                console.log('syscall finished');
+                continueToPlay();
+            }
+            else{
+                reverseCompileAndPlay(instructionList[address].substring(0,6));
+            }
+        }
+
+        function highLight(lineNum, charNum, color) {
+          CodeMirrorEditor.getDoc().markText({
+                line: lineNum,
+                ch: 0
+              }, {
+                line: lineNum,
+                ch: charNum
+              }, {
+                css: color
+              });
+        }
+
+        function getCode() {
+            var source = CodeMirrorEditor.getValue();
+            sourceIns = source.split("\n");
+            mapForLabel = new Map();
+            patt = /^[\s]$/;
+            colon = /[(\:)]+/;
+            instructionCounter = 0;
+            address = "4194304";
+            let posOfSpace;
+            let posOfColon;
+            for (i = 0; i < sourceIns.length; i++) {
+              sourceIns[i] = sourceIns[i].trim();
+            }
+
+
+            var length = sourceIns.length;
+            for (i = 0; i < length; i++) {
+                if (sourceIns[i] == "" || patt.test(sourceIns[i]) || sourceIns[i].substring(sourceIns[i].length - 1, sourceIns[i].length) == ":" || sourceIns[i].indexOf('.') != -1) {
+                    operator[i] = "empty";
+                } else if(colon.test(sourceIns[i])){
+                    posOfSpace = sourceIns[i].indexOf(":");
+                    colonIns = sourceIns[i].substring(posOfSpace+1, sourceIns[i].length).trim();
+                    posOfSpace = colonIns.indexOf(" ");
+                    operator[i] = colonIns.substring(0, posOfSpace);
+                } else if(sourceIns[i] == 'syscall'){
+                    operator[i] = 'syscall';
+                }
+                else {
+                    posOfSpace = sourceIns[i].indexOf(" ");
+                    operator[i] = sourceIns[i].substring(0, posOfSpace);
+                    if(operator[i] == "blt" || operator[i] == "bgt") {
+                        operator[i] = new Array();
+                        operator[i][0] = "slt";
+                        operator[i][1] = "bne";
+                    }else if(operator[i] == "ble" || operator[i] == "bge") {
+                        operator[i] = new Array();
+                        operator[i][0] = "slt";
+                        operator[i][1] = "beq";
+                    }else if(operator[i] == "sge") {
+                        operator[i] = new Array();
+                        operator[i][0] = "slt";
+                        operator[i][1] = "ori";
+                        operator[i][2] = "subu";
+                    }
+                    else if(operator[i] == "la"){
+                        operator[i] = new Array();
+                        operator[i][0] = "lui";
+                        operator[i][1] = "ori";
+                    }
+                }
+            }
+        }
+
+        function reverseCompileAndPlay(opcode){
+                if(opcode == '000000'){
+                    RPlay();
+                }
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                    ADDIPlay();
+                }
+                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
+                    BEQPlay(); //存疑：lui指令到底是跑在这里，还是应该挪到addi??
+                }
+                else if(opcode == '100011'){
+                    LWPlay();
+                }
+                else if(opcode == '101011'){
+                    SWPlay();
+                }
+                else if(opcode == '000010'){
+                    JPlay();
+                }
+        }
+
+        function typeMatching(opcode){
+                if(opcode == '000000'){
+                    stepNum = 4;
+                }
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                    stepNum = 4;
+                }
+                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
+                    stepNum = 5;
+                }
+                else if(opcode == '100011'){
+                    stepNum = 5;
+                }
+                else if(opcode == '101011'){
+                    stepNum = 4;
+                }
+                else if(opcode == '000010'){
+                    stepNum = 4;
+                }
+        }
+
+        function reverseCompileAndForward(opcode, step){
+                if(opcode == '000000'){
+                    RStepForward(step);
+                }
+                else if (opcode == '001000' || opcode == '001001' || opcode == '001100' || opcode == '001101' || opcode == '001110'|| opcode == '001010' || opcode == '001011'){
+                    ADDIStepForward(step);
+                }
+                else if(opcode == '001111' || opcode == '000101' || opcode == '000100'){
+                    BEQStepForward(step);
+                }
+                else if(opcode == '100011'){
+                    LWStepForward(step);
+                }
+                else if(opcode == '101011'){
+                    SWStepForward(step);
+                }
+                else if(opcode == '000010'){
+                    JStepForward(step);
+                }
+        }
+
+
+        $('.fas.fa-step-forward').click(function () { // 向前一步
+              if(insNum == 0){ //如果上一条指令的动画全都运行完了，运行下一条指令
+                  if(lineNum != -1){
+                      CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
+                      $('#uploadFileButton').css("pointer-events", "none");
+                      $('#compile').css("pointer-events", "none");
+                      highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
+                  }
+                  if(cpu.Errormsg != ""){
+                      let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
+                      $("#displayArea").val(temp);
+                      return false;
+                  }
+                  cpu.oneClockCycle();
+                  address = cpu.getCurrentInsAddr();
+                  address = parseInt(address, 2).toString(16);
+                  if(instructionMap[address] == undefined){
+                      CodeMirrorEditor.setOption("readOnly", false); // 变为非只读
+                      $('#uploadFileButton').css("pointer-events", "auto");
+                      $('#compile').css("pointer-events", "auto");
+                      $('#fw').css("pointer-events", "none");
+                      $('#play').css("pointer-events", "none");
+                      $('#pause').css("pointer-events", "none");
+                      $('#halfSpeed').css("pointer-events", "none");
+                      $('#doubleSpeed').css("pointer-events", "none");
+                      let temp = $("#displayArea").val() + "Finished running." + "\n" ;
+                      $("#displayArea").val(temp);
+                      return;
+                  }
+                  lineNum = instructionMap[address];
+                  highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                  if(instructionList[address] == "00000000000000000000000000001100"){
+                      console.log('syscall finished');
+
+                  }
+                  else{
+                      typeMatching(instructionList[address].substring(0,6));
+                  }
+              }
+            if(instructionList[address] != "00000000000000000000000000001100"){
+                insNum++;
+                reverseCompileAndForward(instructionList[address].substring(0,6), insNum);
+
+                if(insNum == stepNum) { // 如果这条指令的动画都结束了，insNum变为0
+                    insNum = 0;
+                }
+            }
+          });
+
+            function storeALLInstruction(){
+                let machineCodes = cpu.getMachineCode();
+                let index = 4194304;
+                for(var a=0; a<machineCodes.length; a++){
+                    instructionList[index.toString(16)] = machineCodes[a];
+                    index += 4;
+                }
+            }
+            function mapping(){
+                var index = 4194304;
+                for(let i=0; i<operator.length; i++){
+                    if(Array.isArray(operator[i])){
+                        for( let j=0; j<operator[i].length; j++){
+                            instructionMap[index.toString(16)] = i;
+                            index += 4;
+                        }
+                    }
+                    else if(operator[i] != 'empty'){
+                        instructionMap[index.toString(16)] = i; // 让这个地址映射到i行
+                        index += 4;
+                    }
+                }
+
+            }
+
+
+            $('.fas.fa-play-circle').click(function(){
+                CodeMirrorEditor.setOption("readOnly", true); // codemirror变为只读
+                $('#uploadFileButton').css("pointer-events", "none");
+                $('#compile').css("pointer-events", "none");
+                cpu.oneClockCycle();
+                address = cpu.getCurrentInsAddr();
+                address = parseInt(address, 2).toString(16);
+                lineNum = instructionMap[address];
+                highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                reverseCompileAndPlay(instructionList[address].substring(0,6));
+
+            });
+
+            $(".dataCircle").hover(function(){
+                //if($(this).css("opacity")!=0 && lineNum>-1) {
+                if($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // PC
+                    var dataValue=cpu.PCOut;
+                } else if($(this).attr("id")=="data3" || $(this).attr("id")=="data14") { // PCAdder
+                    var dataValue="00000000000000000000000000000100";
+                } else if($(this).attr("id")=="data4") { // IM->read register1 [25-21]
+                    var dataValue=cpu.InsMemOut.substring(21,25);
+                } else if($(this).attr("id")=="data42") { // IM->control [31-26]
+                    var dataValue=cpu.InsMemOut.substring(26,31);
+                } else if($(this).attr("id")=="data6") { // IM->read register2 [20-16]
+                    var dataValue=cpu.InsMemOut.substring(16,20);
+                } else if($(this).attr("id")=="data5") { // IM->mux
+                    var dataValue=cpu.InsMemOut.substring(11,15);
+                } else if($(this).attr("id")=="data19") { // IM->ALU control
+                    var dataValue=cpu.InsMemOut.substring(0,15);
+                } else if($(this).attr("id")=="data20") { // IM->sign extend
+                    var dataValue=cpu.InsMemOut.substring(0,15);
+                } else if($(this).attr("id")=="data28") { // IM->shift left 2[25-0]
+                    var dataValue=cpu.InsMemOut.substring(0,25);
+                } else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // PC adder
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // instruction memory
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data8") { // register
+                    var dataValue=cpu.registerFileOutPin1;
+                }else if ($(this).attr("id")=="data9" || $(this).attr("id")=="data24") { // register
+                    var dataValue=cpu.registerFileOutPin2;
+                }else if ($(this).attr("id")=="data12" || $(this).attr("id")=="data22") { // ALU
+                    var dataValue=cpu.ALUResultOut;
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // sign extend
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data23") { // data memory
+                    var dataValue=cpu.DMOut;
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // Mux
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // Mux
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // Mux
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data1" || $(this).attr("id")=="data2") { // Mux
+                    var dataValue="123";
+                }else if ($(this).attr("id")=="data29") { // shift left2 左
+                    var dataValue=cpu.InsMemOut.substring(0,25)+"00";
+                }else if ($(this).attr("id")=="data30") { // shift left2 左 jump address
+                    /*var pcOut=cpu.PCOut;
+                    var binary4=100;
+                    var res = addBinary(pcOut, binary4);*/
+                    var result = cpu.PCOut+cpu.InsMemOut.substring(0,25)+"00";
+                    var dataValue=result;
+                } else if ($(this).attr("id")=="data27") { // Adder
+                    var dataValue=cpu.aluAdderOut;
+                } else if ($(this).attr("id")=="data73" || $(this).attr("id")=="data7" || $(this).attr("id")=="data72") { // PCAdder->jumpAddress[31-0]
+                    var dataValue=cpu.PCAdderOut;
+                }
+                $("#dataInfo").val(dataValue);
+                //}
+            },function () {
+                $("#dataInfo").val("");
+            });
+
+
+            $("#dynamicMemory").click(function(){
+                $("#dynamicTable").css('display', 'block');
+                event.stopPropagation();
+            });
+            $("#staticMemory").click(function(){
+               $("#staticTable").css('display', 'block');
+               event.stopPropagation();
+            });
+            $("body").click(function (){
+               $("#dynamicTable").css('display', 'none');
+               $("#staticTable").css('display', 'none');
+            });
+            $("#staticTable").click(function(){
+               return false;
+            });
+            $("#dynamicTable").click(function(){
+               return false;
+            });
+
+            var codeBox = document.getElementById('code');
+            var CodeMirrorEditor = CodeMirror.fromTextArea(codeBox, {
+                mode:"mips",
+                lineNumbers: true,
+                firstLineNumber: 0
+            });
+            CodeMirrorEditor.setSize('auto', '100%');
+            CodeMirrorEditor.addKeyMap({
+                name: 'autoInsertParentheses',
+                "'('": (cm) => {
+                    const cur = cm.getCursor()
+                    cm.replaceRange('()', cur, cur, '+insert')
+                    cm.doc.setCursor({ line: cur.line, ch: cur.ch + 1 })
+                },
+                "'{'": (cm) => {
+                    const cur = cm.getCursor()
+                    cm.replaceRange('{}', cur, cur, '+insert')
+                    cm.doc.setCursor({ line: cur.line, ch: cur.ch + 1 })
+                }
+            });
+            CodeMirrorEditor.on("change",function(CodeMirrorEditor, changes){
+                $('#fw').css("pointer-events", "none");
+                $('#play').css("pointer-events", "none");
+                $('#pause').css("pointer-events", "none");
+                $('#halfSpeed').css("pointer-events", "none");
+                $('#doubleSpeed').css("pointer-events", "none");
+            });
+
+            $("#demo").click(function(){
+                CodeMirrorEditor.setValue('.text\n.globl main\nmain:\nla $a0, str\nli $v0, 4\nsyscall\nli $v0, 10\nsyscall\n.data\nstr: .asciiz "hello world"');
+              });
+            $("#redo").click(function(){
+                location.reload(); 
+            });
+            $('#uploadFileButton').click(function() {
+                $("#file").trigger("click");
+            });
+            $('#file').change(function() {
+                var file = document.getElementById("file");
+                var filename = file.files[0].name;
+                if(/(\.asm|\.txt)$/.test(filename)){
+                    var reader = new FileReader();
+                    reader.readAsText(file.files[0]);
+                    reader.onload = function(){
+                        var data = reader.result;
+                        CodeMirrorEditor.setValue(data);
+                    }
+                }
+                file.value = '';
+            });
+            $('#downloadFileButton').click(function () {
+                downloadFile('#downloadFileButton', 'demo.asm', CodeMirrorEditor.getValue());
+            });
+            $("#compile").click(function(){
+                continuePlay.theFlagData = 0;
+                address = 0;
+                instructionList = {}; // Store all instructions, including syscall
+                instructionMap = {}; // Store mapping relationships between instructions and code mirror.
+                lineNum=-1;
+                insNum=0;
+                stepNum=0;
+                sourceIns=[];
+                operator= [];
+                sequenceFlag = 0;
+                cpu = new getCPU();
+                cpu.Assemble(CodeMirrorEditor.getValue());
+                if(cpu.Errormsg != ""){
+                    let temp = $("#displayArea").val() + cpu.Errormsg + "\n" ;
+                    $("#displayArea").val(temp);
+                    return false;
+                }
+                getCode();
+                storeALLInstruction();
+                mapping();
+                initializeIM();
+                refreshRegisters();
+                initializeSM();
+                refreshDM();
+                $('#fw').css("pointer-events", "auto");
+                $('#play').css("pointer-events", "auto");
+                $('#pause').css("pointer-events", "auto");
+                $('#halfSpeed').css("pointer-events", "auto");
+                $('#doubleSpeed').css("pointer-events", "auto");
+            })
+
+          });
+
+
+
+
+
+
+
+        function downloadFile (el, fileName, content) {
+            var aLink = document.querySelector(el);
+            var blob = new Blob([content]);                
+            aLink.download = fileName;
+            aLink.href = URL.createObjectURL(blob);
+        }   
+        function MouseWheelHandler(o) {
+          $(o).css({'width':'auto','height':'auto','max-width':'1500px','max-height':'1500px'});
+          var zoom=parseInt(o.style.zoom, 10)||100;
+          zoom+=event.wheelDelta/12;
+          if (zoom>0) {
+              if(zoom>200){
+                zoom = 200;
+              }if(zoom<100){
+                zoom = 100;
+              }
+              o.style.zoom=zoom+'%';
+          }
+          return false;
+        }
+
+
+
+
+    </script>
+
+
+    <style>
+      .card-body a:hover:after {
+        position: absolute;
+        left: 40px;
+        top: 1px;
+        padding: 1px;
+        background-color: #0095ff;
+        border-radius: 5px;
+        color: #fff;
+        content: attr(title);
+        z-index: 2;
+        width: 150px;
+        text-align:center;
+      }
+        #displayArea{
+          height: 85%;
+        }
+        #playSpeed{
+            height: 30px;
+            width: 50px;
+            border: hidden;
+        }
+        ::-webkit-scrollbar{
+          width: 10px;
+          height: 10px;
+        }
+     
+        ::-webkit-scrollbar-thumb{
+          border-radius: 1em;
+          background-color: rgba(50,50,50,.3);
+        }
+        
+        ::-webkit-scrollbar-track{
+          border-radius: 1em;
+          background-color: rgba(50,50,50,.1);
+        }
+        /*footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        main {
+            height: 100vh;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        #mainContent {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center
+        }*/
+    </style>
+
+
+</body></html>
