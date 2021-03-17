@@ -77,7 +77,7 @@ function ADDIBind(){
         ADDIChecker();
     });
 
-    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data3').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
@@ -87,34 +87,34 @@ function ADDIBind(){
         }
     });
 
-    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
     });
 
 
-    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
     });
-    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data5").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data5").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data5').css("animation-play-state", "paused");
         $('#data5').css("animation", "none");
     });
-    $("#data20").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data20").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data20').css("animation-play-state", "paused");
         $('#data20').css("animation", "none");
     });
-    $("#ALUSrc").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#ALUSrc").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#ALUSrc').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
@@ -122,12 +122,12 @@ function ADDIBind(){
             addiStep3();
         }
     });
-    $("#RegWrite").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#RegWrite").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#RegWrite').css("animation-play-state", "paused");
     });
 
 
-    $("#data21").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data21").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data21').css("animation-play-state", "paused");
         $('#data21').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -136,17 +136,17 @@ function ADDIBind(){
             addiStep4();
         }
     });
-    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
     });
 
-    $("#data11").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data11").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
     });
 
-    $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         playing = false;
         refreshRegisters();
         $('#data12').css("animation-play-state", "paused");

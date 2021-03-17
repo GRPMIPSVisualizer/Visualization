@@ -73,7 +73,7 @@ function JBind(){
         JChecker();
     });
 
-    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data3').css("animation-play-state", "paused");
         $('#data3').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -82,26 +82,26 @@ function JBind(){
             jStep2();
         }
     });
-    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
     });
 
 
-    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data28").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data28").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data28').css("animation-play-state", "paused");
         $('#data28').css("animation", "none");
     });
-    $("#Jump").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#Jump").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#Jump').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
@@ -111,19 +111,19 @@ function JBind(){
     });
 
 
-    $("#data72").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data72").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data72').css("animation-play-state", "paused");
         $('#data72').css("animation", "none");
     });
-    $("#data73").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data73").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data73').css("animation-play-state", "paused");
         $('#data73').css("animation", "none");
     });
-    $("#data29").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data29").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data29').css("animation-play-state", "paused");
         $('#data29').css("animation", "none");
     });
-    $("#data30").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data30").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data30').css("animation-play-state", "paused");
         $('#data30').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -134,7 +134,7 @@ function JBind(){
     });
 
 
-    $("#data11").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data11").one("animationend webkitAnimationEnd oAnimationEnd ", function () {
         playing = false;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");

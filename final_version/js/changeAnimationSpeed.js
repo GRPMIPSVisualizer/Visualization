@@ -35,6 +35,8 @@ $('.btn.btn-primary.double').click(function () {
 function Unbind(){
     var data = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data8', 'data9', 'data10', 'data11', 'data12', 'data18', 'data19', 'data20', 'data21', 'data22', 'data23', 'data24', 'data25', 'data26', 'data27', 'data28', 'data29', 'data30', 'data42', 'data73', 'data72', 'Jump', 'isZero', 'BranchAndZero', 'Branch', 'ALUSrc', 'RegWrite', 'RegDst', 'ALUOp', 'MemWrite', 'MemRead', 'MemtoReg', 'and1', 'pause'];
     for(var i=0;i<41;i++) {
-        $("#"+data[i]).unbind();
+        $("#"+data[i]).unbind("animationend");
+        $("#"+data[i]).unbind("webkitAnimationEnd");
+        $("#"+data[i]).unbind("oAnimationEnd");
     }
 }

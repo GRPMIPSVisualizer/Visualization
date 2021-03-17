@@ -86,7 +86,7 @@ function RBind(){
         RChecker();
     });
 
-    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data3').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
@@ -95,42 +95,42 @@ function RBind(){
             addStep2();
         }
     });
-    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
     });
 
 
-    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
     });
-    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data5").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data5").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data5').css("animation-play-state", "paused");
         $('#data5').css("animation", "none");
     });
-    $("#data6").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data6").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data6').css("animation-play-state", "paused");
         $('#data6').css("animation", "none");
     });
-    $("#ALUOp").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#ALUOp").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#ALUOp').css("animation-play-state", "paused");
 
     });
-    $("#RegWrite").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#RegWrite").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#RegWrite').css("animation-play-state", "paused");
     });
 
-    $("#data19").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data19").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data19').css("animation-play-state", "paused");
         $('#data19').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -140,20 +140,20 @@ function RBind(){
         }
     });
 
-    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
     });
-    $("#data9").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data9").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data9').css("animation-play-state", "paused");
         $('#data9').css("animation", "none");
     });
-    $("#data10").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data10").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data10').css("animation-play-state", "paused");
         $('#data10').css("animation", "none");
     });
 
-    $("#data7").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data7").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data7').css("animation-play-state", "paused");
         $('#data7').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -163,7 +163,7 @@ function RBind(){
         }
     });
 
-    $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         playing = false;
         refreshRegisters();
         $('#data12').css("animation-play-state", "paused");
@@ -179,12 +179,12 @@ function RBind(){
         }
     });
 
-    $("#data18").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data18").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data18').css("animation-play-state", "paused");
         $('#data18').css("animation", "none");
     });
 
-    $("#data11").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data11").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
     });

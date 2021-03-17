@@ -1020,7 +1020,7 @@ scrollbar
 
 @keyframes pathing {
     0% {
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
     }
     33% {
         opacity: 1;
@@ -1038,7 +1038,7 @@ scrollbar
 
 @-webkit-keyframes pathing {
     0% {
-        transform: translate3D(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
     }
     33% {
         opacity: 1;

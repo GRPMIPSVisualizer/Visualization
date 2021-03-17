@@ -97,7 +97,7 @@ function BEQBind(){
         BEQChecker();
     });
 
-    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data3").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data3').css("animation-play-state", "paused");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
@@ -106,26 +106,26 @@ function BEQBind(){
             beqStep2();
         }
     });
-    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data1").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data1').css("animation-play-state", "paused");
         $('#data1').css("animation", "none");
     });
-    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data2").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         refreshIM();
         $('#data2').css("animation-play-state", "paused");
         $('#data2').css("animation", "none");
     });
 
-    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data4").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data4').css("animation-play-state", "paused");
         $('#data4').css("animation", "none");
 
     });
-    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data42").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data42').css("animation-play-state", "paused");
         $('#data42').css("animation", "none");
     });
-    $("#data6").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data6").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data6').css("animation-play-state", "paused");
         $('#data6').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -134,21 +134,21 @@ function BEQBind(){
             beqStep3();
         }
     });
-    $("#data20").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data20").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data20').css("animation-play-state", "paused");
         $('#data20').css("animation", "none");
     });
 
 
-    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data8").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data8').css("animation-play-state", "paused");
         $('#data8').css("animation", "none");
     });
-    $("#data9").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data9").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data9').css("animation-play-state", "paused");
         $('#data9').css("animation", "none");
     });
-    $("#data10").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data10").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data10').css("animation-play-state", "paused");
         $('#data10').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -157,37 +157,37 @@ function BEQBind(){
             beqStep4();
         }
     });
-    $("#data25").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data25").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data25').css("animation-play-state", "paused");
         $('#data25').css("animation", "none");
     });
-    $("#isZero").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#isZero").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#isZero').css("animation-play-state", "paused");
     });
-    $("#BranchAndZero").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#BranchAndZero").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#BranchAndZero').css("animation-play-state", "paused");
     });
-    $("#Branch").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#Branch").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#Branch').css("animation-play-state", "paused");
     });
-    $("#and1").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#and1").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#and1').css("animation-play-state", "paused");
     });
 
 
-    $("#data7").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data7").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data7').css("animation-play-state", "paused");
         $('#data7').css("animation", "none");
     });
-    $("#data72").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data72").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data72').css("animation-play-state", "paused");
         $('#data72').css("animation", "none");
     });
-    $("#data26").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data26").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data26').css("animation-play-state", "paused");
         $('#data26').css("animation", "none");
     });
-    $("#data27").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data27").bind("animationend webkitAnimationEnd oAnimationEnd ", function () {
         $('#data27').css("animation-play-state", "paused");
         $('#data27').css("animation", "none");
         $('#fw').css("pointer-events", "auto");
@@ -197,7 +197,7 @@ function BEQBind(){
         }
     });
 
-    $("#data11").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+    $("#data11").one("animationend webkitAnimationEnd oAnimationEnd ", function () {
         playing = false;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
