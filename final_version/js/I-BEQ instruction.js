@@ -198,6 +198,7 @@ function BEQBind(){
     });
 
     $("#data11").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        playing = false;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
         $('#isZero').css("animation", "none");
@@ -216,7 +217,7 @@ function BEQBind(){
 }
 function BEQPlay(){
     sequenceFlag = 1;
-    beqStep1();
+    setTimeout(beqStep1, 500);
 }
 
 function BEQStepForward(beqStep){
@@ -242,7 +243,7 @@ function BEQStepForward(beqStep){
 }
 
 function beqStep1(){
-    setTimeout(BEQBind, 1000);
+    setTimeout(BEQBind, 100);
     $('#fw').css("pointer-events", "none");
     $('#play').css("pointer-events", "none");
     $('#pause').css("pointer-events", "auto");

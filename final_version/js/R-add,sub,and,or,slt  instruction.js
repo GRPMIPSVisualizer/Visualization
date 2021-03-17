@@ -164,6 +164,7 @@ function RBind(){
     });
 
     $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        playing = false;
         refreshRegisters();
         $('#data12').css("animation-play-state", "paused");
         $('#data12').css("animation", "none");
@@ -212,11 +213,11 @@ function RStepForward(addStep){
 
 function RPlay(){
     sequenceFlag = 1;
-    addStep1();
+    setTimeout(addStep1, 500);
 }
 
 function addStep1(){
-    setTimeout(RBind, 1000);
+    setTimeout(RBind, 50);
     $('#fw').css("pointer-events", "none");
     $('#play').css("pointer-events", "none");
     $('#pause').css("pointer-events", "auto");

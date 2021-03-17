@@ -174,6 +174,7 @@ function LWBind(){
 
 
     $("#data11").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        playing = false;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
         $('#MemRead').css("animation", "none");
@@ -198,7 +199,7 @@ function LWBind(){
 }
 function LWPlay(){
     sequenceFlag = 1;
-    lwStep1();
+    setTimeout(lwStep1, 500);
 }
 
 function LWStepForward(lwStep){
@@ -224,7 +225,7 @@ function LWStepForward(lwStep){
 }
 
 function lwStep1(){
-    setTimeout(LWBind, 1000);
+    setTimeout(LWBind, 50);
     $('#fw').css("pointer-events", "none");
     $('#play').css("pointer-events", "none");
     $('#pause').css("pointer-events", "auto");

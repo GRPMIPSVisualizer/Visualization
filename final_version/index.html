@@ -16,6 +16,7 @@
     <script type="text/javascript" src="js/TableDisplay.js"></script>
     <script type="text/javascript">
         continuePlay = { theFlagData: 0};
+        playing = false;
         address = 0;
         instructionList = {}; // Store all instructions, including syscall
         instructionMap = {}; // Store mapping relationships between instructions and code mirror.
@@ -60,7 +61,7 @@
         <div class="container" style="overflow: hidden;">
             <div class="row">
                 <div class="card col-sm-12 col-md-9 col-lg-9" style="height: 70vh; overflow-y: scroll; overflow-x: scroll" v-html="log">
-                          <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%;" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
+                          <div class="code-img" style="width: auto; text-align: center; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); height: 100%; max-width: 1500px; max-height: 1500px; zoom: 120%; -moz-transform: scale(1.2)" onmousewheel="return MouseWheelHandler(this)" id="captchaImg">
                                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg
                                 style=" display: inline-block;max-width: 200%;max-height: 200%;min-width: 100%;min-height:100%" 
@@ -2054,7 +2055,7 @@
                         <a type="button" id="compile" class="fas fa-tools" title="compile"></a>
                         <a type="button" id="redo" class="fas fa-redo-alt" title="redo"></a>
                     </div>
-                    <textarea id="code" name="code" style="display: none;"></textarea>
+                    <textarea id="code" name="code" style="display: none;" ></textarea>
                 </div>
             </div>
             <div class="row">
@@ -2069,7 +2070,7 @@
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
                         <input id="dataInfo" name="dataInfo" style="margin-left: 7px" readonly>
                         </p><div id="superToggler" class="toggler"></div>
-                        <textarea id="displayArea"></textarea>
+                        <textarea id="displayArea" content=""></textarea>
                     <p></p>
                 </div>
             </div>
@@ -2134,7 +2135,6 @@
                     if(newValue != 0){
                         highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
                         if(cpu.Errormsg != ""){
-                            alert(cpu.Errormsg);
                             let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                             $("#displayArea").val(temp);
                             return false;
@@ -2173,6 +2173,7 @@
                             continueToPlay();
                         }
                         else{
+                            playing = true;
                             reverseCompileAndPlay(instructionList[address].substring(0,6));
                         }
                     }
@@ -2183,7 +2184,6 @@
         function continueToPlay(){
             highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
             if(cpu.Errormsg != ""){
-                alert(cpu.Errormsg);
                 let temp = $("#displayArea").val() + cpu.Errormsg+ "\n" ;
                 $("#displayArea").val(temp);
                 return false;
@@ -2222,6 +2222,7 @@
                 continueToPlay();
             }
             else{
+                playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
             }
         }
@@ -2388,7 +2389,6 @@
                   highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
                   if(instructionList[address] == "00000000000000000000000000001100"){
                       console.log('syscall finished');
-
                   }
                   else{
                       typeMatching(instructionList[address].substring(0,6));
@@ -2396,8 +2396,8 @@
               }
             if(instructionList[address] != "00000000000000000000000000001100"){
                 insNum++;
+                playing = true;
                 reverseCompileAndForward(instructionList[address].substring(0,6), insNum);
-
                 if(insNum == stepNum) { // 如果这条指令的动画都结束了，insNum变为0
                     insNum = 0;
                 }
@@ -2439,8 +2439,8 @@
                 address = parseInt(address, 2).toString(16);
                 lineNum = instructionMap[address];
                 highLight(lineNum, sourceIns[lineNum].length, "background-color : grey");
+                playing = true;
                 reverseCompileAndPlay(instructionList[address].substring(0,6));
-
             });
 
             $(".dataCircle").hover(function(){
@@ -2608,7 +2608,6 @@
                 $('#halfSpeed').css("pointer-events", "auto");
                 $('#doubleSpeed').css("pointer-events", "auto");
             })
-
           });
 
 
@@ -2622,9 +2621,37 @@
             var blob = new Blob([content]);                
             aLink.download = fileName;
             aLink.href = URL.createObjectURL(blob);
-        }   
+        }
+        document.getElementById('captchaImg').addEventListener("DOMMouseScroll", function (event) {
+            event.stopPropagation();
+            let transform = $(this).css('-moz-transform');
+            let transformMatrix = transform.slice(7, transform.length - 1).split(', ');
+            let d = event.detail;
+            let current = transformMatrix[0] - (d/30);
+            if(current > 2.0){
+                current = 2.0;
+            }
+            else if(current < 0.8){
+                current = 0.8;
+            }
+            console.log(current + " current");
+            $(this).css('-moz-transform', 'scale(' + current + ')');
+        });
+        function getBrowserType() {
+            var ua = navigator.userAgent.toLowerCase();
+
+            var isChrome = ua.indexOf("chrome") != -1;
+
+            var isSafari = ua.indexOf("safari") != -1;
+
+            if(!isChrome && isSafari){
+                return 'safari';
+            }
+        }
         function MouseWheelHandler(o) {
-          $(o).css({'width':'auto','height':'auto','max-width':'1500px','max-height':'1500px'});
+            if(playing == true && getBrowserType() == 'safari'){
+                return false;
+            }
           var zoom=parseInt(o.style.zoom, 10)||100;
           zoom+=event.wheelDelta/12;
           if (zoom>0) {
@@ -2666,11 +2693,12 @@
             width: 50px;
             border: hidden;
         }
+
         ::-webkit-scrollbar{
           width: 10px;
           height: 10px;
         }
-     
+
         ::-webkit-scrollbar-thumb{
           border-radius: 1em;
           background-color: rgba(50,50,50,.3);
@@ -2680,24 +2708,7 @@
           border-radius: 1em;
           background-color: rgba(50,50,50,.1);
         }
-        /*footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-        main {
-            height: 100vh;
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-        #mainContent {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center
-        }*/
+
     </style>
 
 

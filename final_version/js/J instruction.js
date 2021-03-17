@@ -135,6 +135,7 @@ function JBind(){
 
 
     $("#data11").one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        playing = false;
         $('#data11').css("animation-play-state", "paused");
         $('#data11').css("animation", "none");
         $('#Jump').css("animation", "none");
@@ -149,7 +150,7 @@ function JBind(){
 }
 function JPlay(){
     sequenceFlag = 1;
-    jStep1();
+    setTimeout(jStep1, 500);
 }
 function JStepForward(jStep){
     if(jStep == 1){
@@ -171,7 +172,7 @@ function JStepForward(jStep){
 }
 
 function jStep1(){
-    setTimeout(JBind, 1000);
+    setTimeout(JBind, 50);
     $('#fw').css("pointer-events", "none");
     $('#play').css("pointer-events", "none");
     $('#pause').css("pointer-events", "auto");

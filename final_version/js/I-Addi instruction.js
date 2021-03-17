@@ -147,6 +147,7 @@ function ADDIBind(){
     });
 
     $("#data12").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function () {
+        playing = false;
         refreshRegisters();
         $('#data12').css("animation-play-state", "paused");
         $('#data12').css("animation", "none");
@@ -164,7 +165,7 @@ function ADDIBind(){
 }
 function ADDIPlay(){
     sequenceFlag = 1;
-    addiStep1();
+    setTimeout(addiStep1, 500);
 }
 function ADDIStepForward(addiStep){
     if(addiStep == 1){
@@ -184,9 +185,8 @@ function ADDIStepForward(addiStep){
     }
 
 }
-
 function addiStep1(){
-    setTimeout(ADDIBind, 1000);
+    setTimeout(ADDIBind, 50);
     $('#fw').css("pointer-events", "none");
     $('#play').css("pointer-events", "none");
     $('#pause').css("pointer-events", "auto");
