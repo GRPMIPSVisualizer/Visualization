@@ -260,10 +260,10 @@ function beqStep3(){
     $('#data9').css({"animation":"pathing9 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data10').css({"animation":"pathing10 " + 9/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data25').css({"animation":"pathing25 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#isZero').css({"animation":"isZero " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    $('#Branch').css({"animation":"Branch " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    $('#BranchAndZero').css({"animation":"BranchAndZero " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
-    $('#and1').css({"animation":"and1 " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    $('#isZero').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    $('#Branch').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    $('#BranchAndZero').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    $('#and1').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     insNum = 3;
     $('#pause').css("pointer-events", "auto");
 }

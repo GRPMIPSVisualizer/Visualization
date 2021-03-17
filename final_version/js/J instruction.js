@@ -175,7 +175,7 @@ function jStep2(){
     $('#fw').css("pointer-events", "none");
     $('#data42').css({"animation":"pathing42 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data28').css({"animation":"pathing28 " + 5/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#Jump').css({"animation":"Jump " + 8/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#Jump').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     insNum = 2;
     $('#pause').css("pointer-events", "auto");
 }

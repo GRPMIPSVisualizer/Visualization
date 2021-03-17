@@ -112,10 +112,11 @@ function RBind(){
     });
     $("#ALUOp").bind("animationend", function () {
         $('#ALUOp').css("animation-play-state", "paused");
-
+        alert("yo");
     });
     $("#RegWrite").bind("animationend", function () {
         $('#RegWrite').css("animation-play-state", "paused");
+        alert("bro");
     });
 
     $("#data19").bind("animationend", function () {
@@ -225,8 +226,8 @@ function addStep2(){
     $('#data5').css({"animation":"pathing5 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data6').css({"animation":"pathing6 " + 7/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data19').css({"animation":"pathing19 " + 9.5/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#ALUOp').css({"animation":"ALUOp" + 8/parseFloat(speed) + "s 1","animation-play-state":"running"});
-    $('#RegWrite').css({"animation":"RegWrite" + 8/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#ALUOp').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
+    $('#RegWrite').css({"animation":"Wire " + 8/parseFloat(speed) + "s 1","animation-play-state":"running","animation-fill-mode":"forwards"});
     insNum = 2;
     $('#pause').css("pointer-events", "auto");
 }
