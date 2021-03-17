@@ -43,7 +43,6 @@ th{
     border: 1px solid #f0f8ff;
     text-align: center;
 }
-scrollbar
 .highlightRow{
     background-color: aliceblue;
 }
@@ -65,671 +64,397 @@ scrollbar
     color: #838dff;
 }
 #data1 {
-    -webkit-animation: pathing 10s 1;
-    -moz-animation: pathing 10s 1;
-    -o-animation: pathing 10s 1;
     animation: pathing 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data2 {
-    -webkit-animation: pathing2 10s 1;
-    -moz-animation: pathing2 10s 1;
-    -o-animation: pathing2 10s 1;
     animation: pathing2 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data3 {
-    -webkit-animation: pathing3 10s 1;
-    -moz-animation: pathing3 10s 1;
-    -o-animation: pathing3 10s 1;
     animation: pathing3 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data4 {
-    -webkit-animation: pathing4 7s 1;
-    -moz-animation: pathing4 7s 1;
-    -o-animation: pathing4 7s 1;
     animation: pathing4 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 #data42 {
-    -webkit-animation: pathing42 7s 1;
-    -moz-animation: pathing42 7s 1;
-    -o-animation: pathing42 7s 1;
     animation: pathing42 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data5 {
-    -webkit-animation: pathing5 7s 1;
-    -moz-animation: pathing5 7s 1;
-    -o-animation: pathing5 7s 1;
     animation: pathing5 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data6 {
-    -webkit-animation: pathing6 7s 1;
-    -moz-animation: pathing6 7s 1;
-    -o-animation: pathing6 7s 1;
     animation: pathing6 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data7 {
-    -webkit-animation: pathing7 10s 1;
-    -moz-animation: pathing7 10s 1;
-    -o-animation: pathing7 10s 1;
     animation: pathing7 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data72 {
-    -webkit-animation: pathing72 10s 1;
-    -moz-animation: pathing72 10s 1;
-    -o-animation: pathing72 10s 1;
+
     animation: pathing72 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data73 {
-    -webkit-animation: pathing73 7s 1;
-    -moz-animation: pathing73 7s 1;
-    -o-animation: pathing73 7s 1;
+
     animation: pathing73 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
+
     animation-timing-function: linear;
 }
 
 #data8 {
-    -webkit-animation: pathing8 5s 1;
-    -moz-animation: pathing8 5s 1;
-    -o-animation: pathing8 5s 1;
+
     animation: pathing8 5s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data9 {
-    -webkit-animation: pathing9 5s 1;
-    -moz-animation: pathing9 5s 1;
-    -o-animation: pathing9 5s 1;
     animation: pathing9 5s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data10 {
-    -webkit-animation: pathing10 9s 1;
-    -moz-animation: pathing10 9s 1;
-    -o-animation: pathing10 9s 1;
     animation: pathing10 9s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data11 {
-    -webkit-animation: pathing11 10s 1;
-    -moz-animation: pathing11 10s 1;
-    -o-animation: pathing11 10s 1;
     animation: pathing11 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
+
     animation-timing-function: linear;
 }
 
 #data12 {
-    -webkit-animation: pathing12 10s 1;
-    -moz-animation: pathing12 10s 1;
-    -o-animation: pathing12 10s 1;
+
     animation: pathing12 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 
 
 #data18 {
-    -webkit-animation: pathing18 5s 1;
-    -moz-animation: pathing18 5s 1;
-    -o-animation: pathing18 5s 1;
     animation: pathing18 5s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data19 {
-    -webkit-animation: pathing19 9.5s 1;
-    -moz-animation: pathing19 9.5s 1;
-    -o-animation: pathing19 9.5s 1;
     animation: pathing19 9.5s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 
 #data20 {
-    -webkit-animation: pathing20 4.9s 1;
-    -moz-animation: pathing20 4.9s 1;
-    -o-animation: pathing20 4.9s 1;
+
     animation: pathing20 4.9s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data21 {
-    -webkit-animation: pathing21 7s 1;
-    -moz-animation: pathing21 7s 1;
-    -o-animation: pathing21 7s 1;
     animation: pathing21 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data22 {
-    -webkit-animation: pathing22 7s 1;
-    -moz-animation: pathing22 7s 1;
-    -o-animation: pathing22 7s 1;
     animation: pathing22 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data23 {
-    -webkit-animation: pathing23 7s 1;
-    -moz-animation: pathing23 7s 1;
-    -o-animation: pathing23 7s 1;
+
     animation: pathing23 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data24 {
-    -webkit-animation: pathing24 7s 1;
-    -moz-animation: pathing24 7s 1;
-    -o-animation: pathing24 7s 1;
+
     animation: pathing24 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data25 {
-    -webkit-animation: pathing25 7s 1;
-    -moz-animation: pathing25 7s 1;
-    -o-animation: pathing25 7s 1;
+
     animation: pathing25 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data26 {
-    -webkit-animation: pathing26 10s 1;
-    -moz-animation: pathing26 10s 1;
-    -o-animation: pathing26 10s 1;
     animation: pathing26 10s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data27 {
-    -webkit-animation: pathing27 17s 1;
-    -moz-animation: pathing27 17s 1;
-    -o-animation: pathing27 17s 1;
+
     animation: pathing27 17s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: linear;
+    animation-play-state: paused;
     animation-timing-function: linear;
 }
 
 #data28 {
-    -webkit-animation: pathing28 5s 1;
-    -moz-animation: pathing28 5s 1;
-    -o-animation: pathing28 5s 1;
+
     animation: pathing28 5s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data29 {
-    -webkit-animation: pathing29 7s 1;
-    -moz-animation: pathing29 7s 1;
-    -o-animation: pathing29 7s 1;
+
     animation: pathing29 7s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 #data30 {
-    -webkit-animation: pathing30 14s 1;
-    -moz-animation: pathing30 14s 1;
-    -o-animation: pathing30 14s 1;
+
     animation: pathing30 14s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
+    animation-play-state: paused;
     opacity: 0;
-    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 
 #Jump{
-    -webkit-animation: Jump 8s 1;
-    -moz-animation: Jump 8s 1;
-    -o-animation: Jump 8s 1;
+
     animation: Jump 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 
 #isZero{
-    -webkit-animation: isZero 8s 1;
-    -moz-animation: isZero 8s 1;
-    -o-animation: isZero 8s 1;
     animation: isZero 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 
 #BranchAndZero{
-    -webkit-animation: BranchAndZero 8s 1;
-    -moz-animation: BranchAndZero 8s 1;
-    -o-animation: BranchAndZere 8s 1;
     animation: BranchAndZero 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #Branch{
-    -webkit-animation: Branch 8s 1;
-    -moz-animation: Branch 8s 1;
-    -o-animation: Branch 8s 1;
     animation: Branch 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #ALUSrc{
-    -webkit-animation: ALUSrc 8s 1;
-    -moz-animation: ALUSrc 8s 1;
-    -o-animation: ALUSrc 8s 1;
     animation: ALUSrc 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #RegWrite{
-    -webkit-animation: RegWrite 8s 1;
-    -moz-animation: RegWrite 8s 1;
-    -o-animation: RegWrite 8s 1;
     animation: RegWrite 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #RegDst{
-    -webkit-animation: RegDst 8s 1;
-    -moz-animation: RegDst 8s 1;
-    -o-animation: RegDst 8s 1;
     animation: RegDst 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #ALUOp{
-    -webkit-animation: ALUOp 8s 1;
-    -moz-animation: ALUOp 8s 1;
-    -o-animation: ALUOp 8s 1;
     animation: ALUOp 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #MemWrite{
-    -webkit-animation: MemWrite 8s 1;
-    -moz-animation: MemWrite 8s 1;
-    -o-animation: MemWrite 8s 1;
     animation: MemWrite 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #MemRead{
-    -webkit-animation: MemRead 8s 1;
-    -moz-animation: MemRead 8s 1;
-    -o-animation: MemRead 8s 1;
+
     animation: MemRead 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #MemtoReg{
-    -webkit-animation: MemtoReg 8s 1;
-    -moz-animation: MemtoReg 8s 1;
-    -o-animation: MemtoReg 8s 1;
+
     animation: MemtoReg 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 #and1{
-    -webkit-animation: and1 8s 1;
-    -moz-animation: and1 8s 1;
-    -o-animation: and1 8s 1;
+
     animation: and1 8s 1;
-    position: absolute;
+    position: relative;
     z-index: 3;
     opacity: 0;
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
 
 @keyframes Jump {
@@ -1036,24 +761,6 @@ scrollbar
     }
 }
 
-@-webkit-keyframes pathing {
-    0% {
-        transform: translate3d(0px, 0px, 0px);
-    }
-    33% {
-        opacity: 1;
-        transform: translate3d(30px, 0px, 0px);
-    }
-    66% {
-        opacity: 1;
-        transform: translate3d(30px, -440px, 0px);
-    }
-    100% {
-        opacity: 1;
-        transform: translate3d(120px, -440px, 0px);
-    }
-}
-
 @keyframes pathing2 {
     0% {
         opacity: 0;
@@ -1071,39 +778,7 @@ scrollbar
     }
 }
 
-@-webkit-keyframes pathing2 {
-    0% {
-        opacity: 0;
-    }
-    33% {
-        opacity: 0;
-        transform: translate3d(30px, 0px, 0px);
-    }
-    34% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-        transform: translate3d(96px, 0px, 0px);
-    }
-}
-
 @keyframes pathing3 {
-    0% {
-        opacity: 1;
-        transform: translate3d(0px, 0px, 0px);
-    }
-    99% {
-        opacity: 1;
-        transform: translate3d(68px, 0px, 0px);
-    }
-    100% {
-        opacity: 0;
-        transform: translate3d(68px, 0px, 0px);
-    }
-}
-
-@-webkit-keyframes pathing3 {
     0% {
         opacity: 1;
         transform: translate3d(0px, 0px, 0px);

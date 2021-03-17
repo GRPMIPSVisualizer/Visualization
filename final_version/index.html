@@ -1942,7 +1942,7 @@
                         <a type="button" id="doubleSpeed" class="btn btn-primary double" title="double Speed">2.0 x</a>
                         <input id="dataInfo" name="dataInfo" style="margin-left: 7px" readonly>
                         </p><div id="superToggler" class="toggler"></div>
-                        <textarea id="displayArea" content=""></textarea>
+                        <textarea id="displayArea" content="" readonly></textarea>
                     <p></p>
                 </div>
             </div>
@@ -2016,6 +2016,7 @@
 
 
         $(document).ready(function() {
+            $("#displayArea").val("");
             Object.defineProperty(continuePlay, 'theFlagData', {
                 set:function(newValue){
                     if(newValue != 0){
@@ -2066,7 +2067,6 @@
                 }
             })
         $('#playSpeed').val(parseFloat(speed).toFixed(2));
-
         function continueToPlay(){
             highLight(lineNum, sourceIns[lineNum].length, "background-color : white");
             if(cpu.Errormsg != ""){
@@ -2284,9 +2284,6 @@
                 insNum++;
                 playing = true;
                 reverseCompileAndForward(instructionList[address].substring(0,6), insNum);
-                if(insNum == stepNum) { // 如果这条指令的动画都结束了，insNum变为0
-                    insNum = 0;
-                }
             }
           });
 
