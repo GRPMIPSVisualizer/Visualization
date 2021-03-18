@@ -1,43 +1,70 @@
+/**
+ * MapForCommaNum stores core instructions and amount of the commas in the instructions.
+ */
 export class MapForCommaNum {
 
-    private static map = new Map();
+    /**
+     * The map which the keys are instructions and the values are their amount of commas.
+     */
+    private static map = new Map([
+        ["add", 2],
+        ["addu", 2],
+        ["sub", 2],
+        ["subu", 2],
+        ["and", 2],
+        ["or", 2],
+        ["nor", 2],
+        ["slt", 2],
+        ["sltu", 2],
+        ["sll", 2],
+        ["srl", 2],
+        ["jr", 0],
+        ["addi", 2],
+        ["addiu", 2],
+        ["andi", 2],
+        ["beq", 2],
+        ["bne", 2],
+        ["lbu", 1],
+        ["lhu", 1],
+        ["ll", 1],
+        ["lui", 1],
+        ["lw", 1],
+        ["ori", 2],
+        ["slti", 2],
+        ["sltiu", 2],
+        ["sb", 1],
+        ["sc", 1],
+        ["sh", 1],
+        ["sw", 1],
+        ["j", 0],
+        ["jal", 0],
+        ["sra", 2],
 
-    private constructor() {}
+        ["abs", 1],
+        ["blt", 2],
+        ["bgt", 2],
+        ["ble", 2],
+        ["neg", 1],
+        ["negu", 1],
+        ["not", 1],
+        ["bge", 2],
+        ["li", 1],
+        ["la", 1],
+        ["move", 1],
+        ["sge", 2],
+        ["sgt", 2]
+    ]);
 
+    /**
+     * Constructor of MapForCommaNum which is a singleton.
+     */
+    private constructor() { }
+
+    /**
+     * Method for getting the singleton map.
+     * @returns a map which the keys are instructions and the values are their amount of commas.
+     */
     public static getMap(): Map<string, number> {
-        if (this.map.size == 0) {
-            this.map.set("add", 2);
-            this.map.set("addu", 2);
-            this.map.set("sub", 2);
-            this.map.set("subu", 2);
-            this.map.set("and", 2);
-            this.map.set("or", 2);
-            this.map.set("nor", 2);
-            this.map.set("slt", 2);
-            this.map.set("sltu", 2);
-            this.map.set("sll", 2);
-            this.map.set("srl", 2);
-            this.map.set("jr", 0);
-            this.map.set("addi", 2);
-            this.map.set("addiu", 2);
-            this.map.set("andi", 2);
-            this.map.set("beq", 2);
-            this.map.set("bne", 2);
-            this.map.set("lbu", 1);
-            this.map.set("lhu", 1);
-            this.map.set("ll", 1);
-            this.map.set("lui", 1);
-            this.map.set("lw", 1);
-            this.map.set("ori", 2);
-            this.map.set("slti", 2);
-            this.map.set("sltiu", 2);
-            this.map.set("sb", 1);
-            this.map.set("sc", 1);
-            this.map.set("sh", 1);
-            this.map.set("sw", 1);
-            this.map.set("j", 0);
-            this.map.set("jal", 0);
-        }
         return this.map;
     }
 }

@@ -1,19 +1,40 @@
 import {Decoder} from "./Decoder";
 import {InstructionI} from "./InstructionI";
-import {MapForRegister} from "./MapForRegister";
+import { MapForRegister } from "./MapForRegister";
 
+/**
+ * Class for validating and decoding the instruction of type-I into binary code.
+ * It contains methods for validating instruction, decoding instruction and getting the error message.
+ */
 export class DecoderForI extends Decoder {
-    
+    /**
+     * The string for error message.
+     */
+    private errMsg: string = "";
+    /**
+     * The decoder to validate and decode instructions of type-I.
+     */
     private static decoder: DecoderForI = new DecoderForI();
 
+    /**
+     * Constructor of DecoderForI.
+     */
     private constructor(){
         super();
     }
 
+    /**
+     * Method for getting the decoder for instruction of type-I.
+     * @returns the decoder to validate and decode instructions of type-I.
+     */
     public static getDecoder(): DecoderForI {
         return this.decoder;
     }
 
+    /**
+     * Method for validating the instruction of type-I.
+     * @returns true if the instruction is valid, otherwise false.
+     */
     public validate(): boolean {
         let posOfSpace: number = this.ins.indexOf(" ");
         let operandRS: string = "";
@@ -38,11 +59,11 @@ export class DecoderForI extends Decoder {
             operandRT = operands[0];
             operandRS = operands[1];
             IMM = operands[2];
-        } else {
+        } else { // lbu, lhu, ll, lw, sb, sc, sh, sw
             let numLeftBracket = this.ins.split("(").length - 1;
             let numRightBracket = this.ins.split(")").length - 1;
             if (!(numLeftBracket == 1 && numRightBracket == 1)) {
-                console.log("Error 1 in DecoderForI. Invalid instruction format.");
+                this.errMsg = this.errMsg + "Error 201: Invalid instruction format. -- " + this.getIns() + "\n";
                 return false;
             }
             let operands: string[] = this.ins.substring(posOfSpace + 1, this.ins.length).split(",", 2);
@@ -55,36 +76,42 @@ export class DecoderForI extends Decoder {
 
         let patt1 = /^[0-9]+$/;
         let patt2 = /^[a-z0-9]+$/;
+        let patt3 = /^(\-|\+)?\d+$/;
 
          
-        if (!patt1.test(IMM.charAt(0)) && IMM.charAt(0) != "+" && IMM.charAt(0) != "-") {
-            console.log("Error 2 in DecoderForI. Invalid immediate number.");
-        } else if (+IMM <= -32768|| +IMM >= 32767) {
-            console.log("Error 3 in DecoderForI. Invalid immediate number. Out of range.");
+        if (!patt3.test(IMM)) {
+            this.errMsg = this.errMsg + "Error 202: Invalid immediate number. -- " + this.getIns() + "\n";
+            return false;
+        } else if (+IMM <= -32768 || +IMM >= 32767) {
+            this.errMsg = this.errMsg + "Error 203: Invalid immediate number. Out of range. -- " + this.getIns() + "\n";
+            return false;
         }
         
 
         let operands: Array<string> = [operandRS, operandRT];
         let i: number;
         for (i = 0; i < operands.length; i++) {
-            let operand: string = operands[i].substring(1,operands[i].length);
+            let operand: string = operands[i].substring(1, operands[i].length);
             if (operands[i].charAt(0) == "$" && patt1.test(operand) && +operand > 31) {
-                console.log("Error 4 in DecoderForI. Invalid operand.");
+                this.errMsg = this.errMsg + "Error 204: Invalid operand. -- " + this.getIns() + "\n";
                 return false;
             } else if (operands[i] == "" || (operands[i].charAt(0) == "$" && patt1.test(operand) && +operand <= 31)) {
-                break;
+                continue;
             } else if (operands[i].charAt(0) == "$" && patt2.test(operand)) {
                 if (MapForRegister.getMap().has(operand)) {
                     let operandID: string | undefined = MapForRegister.getMap().get(operand);
                     if (operandID == undefined) {
-                        console.log("Error 5 in DecoderForI. Invalid operand.");
+                        this.errMsg = this.errMsg + "Error 205: Invalid operand. -- " + this.getIns() + "\n";
                         return false;
                     } else {
                         this.ins = this.ins.replace(operand, operandID);
                     }
+                } else {
+                    this.errMsg = this.errMsg + "Error 206: Invalid operand. -- " + this.getIns() + "\n";
+                    return false;
                 }
             } else {
-                console.log("Error 6 in DecoderForR. Invalid operand.");
+                this.errMsg = this.errMsg + "Error 207: Invalid operand. -- " + this.getIns() + "\n";
                 return false;
             }
         }
@@ -92,8 +119,20 @@ export class DecoderForI extends Decoder {
         return true;
     }
     
+    /**
+     * Method for decoding the instruction of type-I into binary code.
+     * @returns void
+     */
     public decode(): void {
         let instruction: InstructionI = new InstructionI(this.ins);
         this.binIns = instruction.getBinIns();
+    }
+
+    /**
+     * Method for getting the error message of invalid instruction of type-I.
+     * @returns a string of error message.
+     */
+    public getErrMsg(): string {
+        return this.errMsg;
     }
 }

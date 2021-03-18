@@ -12,6 +12,7 @@ const BinaryAddition_1 = require("./BinaryAddition");
  * @param numOfBits the number of bits of the desired binary number (or two's implement).
  * If the input decimal number is positive, it will be translated into its binary number or its two's complement according to numOfBits.
  * If the input decimal number is negative, it will be translated into its two's complement.
+ * @returns a string of the binary format of the decimal number.
  */
 function decimalToBinary(decimal, numOfBits) {
     let binaryString = '';

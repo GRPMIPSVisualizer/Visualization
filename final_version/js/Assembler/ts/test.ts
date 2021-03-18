@@ -9,12 +9,20 @@ import {DecoderForR} from "./DecoderForR";
 import {DecoderForI} from "./DecoderForI";
 import {DecoderForJ} from "./DecoderForJ";
 import {MapForInsType} from "./MapForInsType";
-import {trimSpace} from "./TrimSpace";
+import { trimSpace } from "./TrimSpace";
+import { binaryToDecimal } from "./BinaryToDecimal";
+
 var list = new ArrayList(10);
 list.add("张三");
 list.add("李四");
 list.add("王五");
 console.log("-------------测试添加-----------------");
+for (var i = 0; i < list.size(); i++) {
+    console.log(list.get(i));
+}
+
+console.log("--------------测试添加--------------------");
+list.add(2, "杨超越");
 for (var i = 0; i < list.size(); i++) {
     console.log(list.get(i));
 }
@@ -37,6 +45,8 @@ list.remove('张三');
 for (var i = 0; i < list.size(); i++) {
     console.log(list.get(i));
 }
+
+console.log("----------------------------");
 
 let nameSiteMapping = new Map();
  
@@ -294,3 +304,55 @@ console.log("--------------------------");
 let str: string = "add $s1,  $s2, $s3";
 str = trimSpace(str);
 console.log(str);
+
+console.log("--------------------------");
+str = "#sd";
+console.log(str.substring(0, str.search("#")));
+
+console.log("--------------------------");
+let indices = new ArrayList(10);
+indices.add("100");
+console.log(indices.get(0));
+
+console.log("--------------------------");
+let instruction31 = new InstructionR("sra $1,$2,1");
+console.log(instruction31.getBinIns());
+
+console.log("--------------------------");
+let strArr = ["YCY", "QWE", "ASD"];
+console.log(strArr);
+strArr.splice(2, 0, "ZXC");
+console.log(strArr);
+
+console.log("--------------------------");
+str = "abs $t1,$t2";
+posOfSpace = str.indexOf(" ");
+console.log(str.substring(posOfSpace + 1).split(","));
+
+console.log("--------------------------");
+let strArr2: string[] = [];
+strArr2.push("abc");
+strArr2.push("qwe");
+strArr2.push("zxc");
+strArr2.push("asd");
+console.log(strArr2);
+strArr = strArr2;
+console.log(strArr);
+
+console.log("-------------------------");
+str = "main: ";
+console.log(str.trim().endsWith(":"));
+
+console.log("-------------------------");
+console.log(binaryToDecimal("0000000000000010"));
+
+console.log("-------------------------");
+let decoder1 = DecoderForI.getDecoder();
+decoder1.setIns("addiu $t1,$8,10");
+console.log(decoder1.validate());
+decoder1.decode();
+console.log(decoder1.getBinIns());
+
+
+// 001000   10010   10001   0000000000011111
+// 001001   01001   01001   0000000000001010

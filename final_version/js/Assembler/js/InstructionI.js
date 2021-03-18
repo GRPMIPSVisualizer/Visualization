@@ -4,16 +4,28 @@ exports.InstructionI = void 0;
 const DecimalToBinary_1 = require("./DecimalToBinary");
 const Instruction_1 = require("./Instruction");
 const MapForI_1 = require("./MapForI");
+/**
+ * Class for decoding the instruction of type-I into binary code.
+ * It contains a constructor and a method to get the error message.
+ */
 class InstructionI extends Instruction_1.Instruction {
-    //The ins should be in the form like "addi $8,$16,10".
-    //There should be only one space between the operator and the first operand, no other space existing.
-    //The register should be in dollar sign and a number.
+    /**
+     * Constructor of InstructionI.
+     * Translate the type-I instruction into binary format.
+     * @param ins the type-I instruction to be translated. It should be in the form like "addi $8,$16,10".
+     * There should be only one space between the operator and the first operand, no other space existing.
+     * The register should be in dollar sign and a number.
+     */
     constructor(ins) {
         super(ins);
+        /**
+         * The string of the error message.
+         */
+        this.errMsg = "";
         let opBin = MapForI_1.MapForI.getMap().get(this.operator);
         if (opBin == undefined) {
             this.op = "XXXXXX";
-            console.log("Error in constructor for InstructionR.");
+            this.errMsg = this.errMsg + "Error 101: Failed to construct type-I instruction. -- " + ins + "\n";
         }
         else {
             this.op = opBin;
@@ -63,6 +75,13 @@ class InstructionI extends Instruction_1.Instruction {
             this.imm = DecimalToBinary_1.decimalToBinary(+this.operandIMM, 16);
         }
         this.binIns = this.op + this.rs + this.rt + this.imm;
+    }
+    /**
+     * Method for getting the error message of type-I instruction.
+     * @returns a string of error message.
+     */
+    getErrMsg() {
+        return this.errMsg;
     }
 }
 exports.InstructionI = InstructionI;

@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.binaryAddition = void 0;
+/**
+ * Add two binary numbers in the form of string.
+ * @param a a string of a binary number to be added.
+ * @param b a string of a binary number to add.
+ * @returns a string of the sum of the two binary numbers.
+ */
 function binaryAddition(a, b) {
     let result = "";
     let x = 0;

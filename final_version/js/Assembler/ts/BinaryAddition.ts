@@ -1,3 +1,9 @@
+/**
+ * Add two binary numbers in the form of string.
+ * @param a a string of a binary number to be added.
+ * @param b a string of a binary number to add.
+ * @returns a string of the sum of the two binary numbers.
+ */
 export function binaryAddition(a: string, b: string) {
     let result: string = "";
     let x: number = 0;

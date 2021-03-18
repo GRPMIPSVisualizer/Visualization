@@ -1,17 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MapForJ = void 0;
+/**
+ * MapForI stores some type-J core instructions and their corresponding 6 bits opcodes.
+ */
 class MapForJ {
+    /**
+     * Constructor of MapForJ which is a singleton.
+     */
     constructor() { }
+    /**
+     * Method for getting the singleton map.
+     * @returns a map which the keys are type-J instructions and the values are their corresponding 6 bits opcodes.
+     */
     static getMap() {
-        if (this.map.size == 0) {
-            let jOp = "000010";
-            let jalOp = "000011";
-            this.map.set("j", jOp);
-            this.map.set("jal", jalOp);
-        }
         return this.map;
     }
 }
 exports.MapForJ = MapForJ;
-MapForJ.map = new Map();
+/**
+ * The map which the keys are type-J instructions and the values are their corresponding 6 bits opcodes.
+ */
+MapForJ.map = new Map([
+    ["j", "000010"],
+    ["jal", "000011"]
+]);

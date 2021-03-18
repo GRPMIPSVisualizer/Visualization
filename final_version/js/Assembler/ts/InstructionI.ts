@@ -2,25 +2,58 @@ import {decimalToBinary} from "./DecimalToBinary";
 import {Instruction} from "./Instruction";
 import {MapForI} from "./MapForI";
 
+/**
+ * Class for decoding the instruction of type-I into binary code.
+ * It contains a constructor and a method to get the error message.
+ */
 export class InstructionI extends Instruction{
 
+    /**
+     * The register of the rs operand of the instruction.
+     */
     private operandRS: string;
+    /**
+     * The register of the rt operand of the instruction.
+     */
     private operandRT: string;
+    /**
+     * The immediate number of the instruction.
+     */
     private operandIMM: string;
+    /**
+     * The 6 bits opcodes of the type-I instruction.
+     */
     private op: string;
+    /**
+     * The 5 bits rscodes of the type-I instruction.
+     */
     private rs: string;
+    /**
+     * The 5 bits rtcodes of the type-I instruction.
+     */
     private rt: string;
+    /**
+     * The 16 bits code of the immediate number of the type-I instruction.
+     */
     private imm: string;
+    /**
+     * The string of the error message.
+     */
+    private errMsg: string = "";
 
-    //The ins should be in the form like "addi $8,$16,10".
-    //There should be only one space between the operator and the first operand, no other space existing.
-    //The register should be in dollar sign and a number.
+    /**
+     * Constructor of InstructionI.
+     * Translate the type-I instruction into binary format.
+     * @param ins the type-I instruction to be translated. It should be in the form like "addi $8,$16,10".
+     * There should be only one space between the operator and the first operand, no other space existing.
+     * The register should be in dollar sign and a number.
+     */
     constructor(ins: string) {
         super(ins);
         let opBin: string | undefined = MapForI.getMap().get(this.operator);
         if (opBin == undefined) {
             this.op = "XXXXXX";
-            console.log("Error in constructor for InstructionR.");
+            this.errMsg = this.errMsg + "Error 101: Failed to construct type-I instruction. -- " + ins + "\n";
         } else {
             this.op = opBin;
         }
@@ -67,5 +100,13 @@ export class InstructionI extends Instruction{
             this.imm = decimalToBinary(+this.operandIMM, 16);
         }
         this.binIns = this.op + this.rs + this.rt + this.imm;
+    }
+
+    /**
+     * Method for getting the error message of type-I instruction.
+     * @returns a string of error message.
+     */
+    public getErrMsg(): string {
+        return this.errMsg;
     }
 }
