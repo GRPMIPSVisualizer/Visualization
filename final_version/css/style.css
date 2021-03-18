@@ -81,6 +81,13 @@ th{
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
+@font-face {
+    font-family: 'Cormorant Unicase Bold';
+    src: url("../css/Cormorant_Unicase/CormorantUnicase-Bold.ttf");
+    src: url("../css/Cormorant_Unicase/CormorantUnicase-Bold.eot") format('eot'),
+    url("../css/Cormorant_Unicase/CormorantUnicase-Bold.woff") format('woff'),
+    url("../css/Cormorant_Unicase/CormorantUnicase-Bold.svg") format('svg');
+}
 
 @keyframes Wire {
     0%{
