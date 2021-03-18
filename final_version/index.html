@@ -1844,6 +1844,13 @@
                                             cx="634.38879"
                                             cy="157.61679"
                                             r="7.810112" />
+                                    <circle
+                                            style="fill:#ff0000;stroke-width:3.9886"
+                                            id="data3_1"
+                                            class="dataCircle"
+                                            cx="148.26018"
+                                            cy="142.07948"
+                                            r="7.810112" />
                         <foreignObject   width="256" height="148" x="246" y="440" fill="#e7e6e1">
                             <body xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="instructionTable" class="scrollable" style="width: 248px; height: 140px;overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
@@ -1861,10 +1868,10 @@
                         <foreignObject   width="204" height="260" x="720" y="200" fill="#e7e6e1">
                             <body xmlns= "http://www.w3.org/1999/xhtml">
                             <div id="registerTable" class="scrollable" style="width: 196px; height: 252px; overflow-x: scroll; overflow-y: scroll; border: 4px solid deepskyblue;">
-                                <table bgcolor="white" id="rTable">
+                                <table bgcolor="white" id="rTable" style="min-height: border-box">
                                     <thead>
                                     <tr>
-                                        <th style="width: 40%">Register</th>
+                                        <th width=""40%>Register</th>
                                         <th>32-bits Data</th>
                                     </tr>
                                     </thead>
@@ -2004,14 +2011,13 @@
      <script>
          window.onload = function(){
              let reg = ['$zero','$at','$v0','$v1','$a0','$a1','$a2','$a3','$t0','$t1','$t2','$t3','$t4','$t5','$t6','$t7','$s0','$s1','$s2','$s3','$s4','$s5','$s6','$s7','$t8','$t9','$k0','$k1','$gp','$sp','$fp','$ra'];
-            let a = cpu.debugReg();
             let table = document.getElementById('rTable');
             for(let i=0; i<32; i++){
                 let row = table.insertRow(-1);
                 let cell1 = row.insertCell(0);
                 let cell2 = row.insertCell(1);
                 cell1.innerHTML = reg[i];
-                cell2.innerHTML = a[i];
+                cell2.innerHTML = '00000000000000000000000000000000';
             }
          }
 
@@ -2506,6 +2512,7 @@
             aLink.download = fileName;
             aLink.href = URL.createObjectURL(blob);
         }
+
         document.getElementById('captchaImg').addEventListener("DOMMouseScroll", function (event) {
             let transform = $(this).css('-moz-transform');
             let transformMatrix = transform.slice(7, transform.length - 1).split(', ');

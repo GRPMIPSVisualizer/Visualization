@@ -64,17 +64,17 @@ th{
     color: #838dff;
 }
 .dataCircle{
-    position: relative;
+    position: absolute;
     z-index: 3;
     opacity: 0;
     animation-play-state: paused;
     animation-timing-function: linear;
 }
-#data3{
+#data3_1{
     opacity: 1;
 }
 .CtlWire{
-    position: relative;
+    position: absolute;
     z-index: 3;
     opacity: 0;
     animation-play-state: paused;

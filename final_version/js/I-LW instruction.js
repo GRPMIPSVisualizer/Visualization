@@ -77,6 +77,7 @@ function LWBind(){
     $("#data3").bind("animationend", function () {
         $('#data3').css("animation-play-state", "paused");
         $('#data3').css("animation", "none");
+        $('#data3_1').css("opacity", "1");
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
         if(sequenceFlag == 1){
@@ -216,6 +217,7 @@ function lwStep1(){
     $('#play').css("pointer-events", "none");
     $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data3_1').css("opacity", "0");
     $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 1;
     $('#pause').css("pointer-events", "auto");

@@ -79,6 +79,7 @@ function RBind(){
         $('#fw').css("pointer-events", "auto");
         $('#pause').css("pointer-events", "none");
         $('#data3').css("animation", "none");
+        $('#data3_1').css("opacity", "1");
         if(sequenceFlag == 1){
             addStep2();
         }
@@ -213,6 +214,7 @@ function addStep1(){
     //Set animation
     $('#data1').css({"animation":"pathing " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     $('#data2').css({"animation":"pathing2 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
+    $('#data3_1').css("opacity", "0");
     $('#data3').css({"animation":"pathing3 " + 10/parseFloat(speed) + "s 1","animation-play-state":"running"});
     insNum = 1;
     $('#pause').css("pointer-events", "auto");
